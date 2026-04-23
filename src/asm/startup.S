@@ -17,13 +17,13 @@ gpio_output_enable:
     add t0, t0, t1      # Add this offset to the base address to get GPIO_FUNCn_OUT_SEL
     li t2, 0x80         # To route only GPIO, set the last peripheral field to 0x80
     sw t2, 0(t0)        # Update the register
-    li t0, 0x60040024   # GPIO_ENABLE_W1TS_REG
-    li t1, 1
-    sll t1, t1, a0
-    lw t2, 0(t0) 
-    or t2, t2, t1 # t2 = t2 | t1
-    sw t2, 0(t0) # 
-    .size gpio_output_enable .-gpio_output_enable
+
+    li t0, 0x60004024   # GPIO_ENABLE_W1TS_REG
+    li t1, 1            # t1 = 1
+    sll t1, t1, a0      # 0000_0001_0000 @a0
+    sw t1, 0(t0)        # Set to enable
+    ret
+.size gpio_output_enable, .-gpio_output_enable
 
 
 /**
@@ -36,5 +36,32 @@ gpio_output_enable:
 .type gpio_write, %function
 gpio_write:
     li t0, 0x60004008  # address of GPIO_OUT_W1TS_REG
-    li t1, 1           # set the bit
+    li t1, 1           # load to set the bit
     sll t1, t1, a0     # moves the 1 to that specific pin bit
+    sw t1, 0(t0)       # set the bit
+    ret
+.size gpio_write, .-gpio_write
+
+.global _start
+.type _start, %function
+_start:
+    li a0, 0
+    call gpio_output_enable
+
+    loop:
+        call gpio_write
+        
+        li t0, 0x600080a4   # RTC WDT
+        li t1, 0x600000a8   # RTC WDT write protection data
+        li t2, 0x50d83aa1   # disable key
+        sw t2, 0(t1)        # now RTC WDT is writeable
+        li t2, 0x80000000   # load to set the last bit
+        sw t2, 0(t0)        # set the last bit
+    
+        li t0, 0x6001f060   # Main WDT
+        sw t2, 0(t0)        # set something on wdt
+    
+        sw zero, 0(t1)      # write lock RTC WDT 
+            
+        j loop              # jump to loop
+.size _start, .-_start
