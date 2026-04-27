@@ -1,2 +1,0 @@
-0
-1770 694793 1776954550585708107 b020c13f0b65f5be9034d3660860d350 0 /home/akilan/SystemDev/esp32c3-kernel/src/asm/startup.S

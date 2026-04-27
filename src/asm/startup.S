@@ -8,7 +8,6 @@
  * @param   a0: pin number
  * @retval  None
  */
-
 .global gpio_output_enable
 .type gpio_output_enable, %function
 gpio_output_enable:
@@ -35,33 +34,31 @@ gpio_output_enable:
 .global gpio_write
 .type gpio_write, %function
 gpio_write:
-    li t0, 0x60004008  # address of GPIO_OUT_W1TS_REG
+    li t0, 0x60004004  # address of GPIO_OUT_W1TS_REG
     li t1, 1           # load to set the bit
     sll t1, t1, a0     # moves the 1 to that specific pin bit
     sw t1, 0(t0)       # set the bit
     ret
 .size gpio_write, .-gpio_write
 
+
+
 .global _start
 .type _start, %function
 _start:
-    li a0, 0
-    call gpio_output_enable
+    li t0, 0x60000000   # UART0 FIFO Base Address
+    li t1, 65           # ASCII value for 'A'
 
     loop:
-        call gpio_write
-        
-        li t0, 0x600080a4   # RTC WDT
-        li t1, 0x600000a8   # RTC WDT write protection data
-        li t2, 0x50d83aa1   # disable key
-        sw t2, 0(t1)        # now RTC WDT is writeable
-        li t2, 0x80000000   # load to set the last bit
-        sw t2, 0(t0)        # set the last bit
-    
-        li t0, 0x6001f060   # Main WDT
-        sw t2, 0(t0)        # set something on wdt
-    
-        sw zero, 0(t1)      # write lock RTC WDT 
-            
-        j loop              # jump to loop
+        sw t1, 0(t0)    # 'A'
+
+        # li t4, 0x600080a4   # RTC WDT feed
+        # li t5, 0x600080a8   # RTC WDT protect
+        # li t6, 0x50d83aa1   # unlock key
+        # sw t6, 0(t5)        
+        # li t6, 0x80000000   
+        # sw t6, 0(t4)        
+        # sw zero, 0(t5)      #lock key
+
+        j loop              
 .size _start, .-_start

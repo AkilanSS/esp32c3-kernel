@@ -1,0 +1,41 @@
+Command: cmake -G Ninja -B /home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build -DPYTHON_DEPS_CHECKED=1 -DPYTHON=/home/akilan/.espressif/python_env/idf6.1_py3.12_env/bin/python -DESP_PLATFORM=1 -DIDF_TARGET=esp32c3 -DCCACHE_ENABLE=False /home/akilan/SystemDev/esp32c3-kernel/zig-out/temp
+CMake Error at /usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:60 (message):
+  The C++ compiler
+
+    "/home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/riscv32-esp-elf-g++"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: '/home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build/CMakeFiles/CMakeScratch/TryCompile-7mmLL2'
+    
+    Run Build Command(s): /usr/bin/ninja -v cmTC_878a7
+    [1/2] /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/riscv32-esp-elf-g++   @"/home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build/toolchain/cxxflags" -o CMakeFiles/cmTC_878a7.dir/testCXXCompiler.cxx.obj -c /home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build/CMakeFiles/CMakeScratch/TryCompile-7mmLL2/testCXXCompiler.cxx
+    [2/2] : && /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/riscv32-esp-elf-g++ @"/home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build/toolchain/cxxflags" @"/home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build/toolchain/ldflags" CMakeFiles/cmTC_878a7.dir/testCXXCompiler.cxx.obj -o cmTC_878a7   && :
+    FAILED: cmTC_878a7 
+    : && /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/riscv32-esp-elf-g++ @"/home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build/toolchain/cxxflags" @"/home/akilan/SystemDev/esp32c3-kernel/zig-out/temp/build/toolchain/ldflags" CMakeFiles/cmTC_878a7.dir/testCXXCompiler.cxx.obj -o cmTC_878a7   && :
+    /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/bin/ld: /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/lib/libc.a(libc_a-closer.o): in function `_close_r':
+    /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/newlib/newlib/libc/reent/closer.c:47:(.text._close_r+0x14): warning: _close is not implemented and will always fail
+    /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/bin/ld: /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/lib/libc.a(libc_a-lseekr.o): in function `_lseek_r':
+    /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/newlib/newlib/libc/reent/lseekr.c:49:(.text._lseek_r+0x18): warning: _lseek is not implemented and will always fail
+    /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/bin/ld: /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/lib/libc.a(libc_a-readr.o): in function `_read_r':
+    /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/newlib/newlib/libc/reent/readr.c:49:(.text._read_r+0x18): warning: _read is not implemented and will always fail
+    /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/bin/ld: /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/lib/libc.a(libc_a-writer.o): in function `_write_r':
+    /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/newlib/newlib/libc/reent/writer.c:49:(.text._write_r+0x18): warning: _write is not implemented and will always fail
+    /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/bin/ld: /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/lib/libc.a(libc_a-fclose.o): in function `fclose':
+    /builds/idf/crosstool-NG/.build/riscv32-esp-elf/src/newlib/newlib/libc/stdio/fclose.c:125:(.text.fclose+0x6): warning: __getreent is not implemented and will always fail
+    /home/akilan/.espressif/tools/riscv32-esp-elf/esp-15.2.0_20251204/riscv32-esp-elf/bin/../lib/gcc/riscv32-esp-elf/15.2.0/../../../../riscv32-esp-elf/bin/ld: cmTC_878a7: final close failed: No space left on device
+    collect2: error: ld returned 1 exit status
+    ninja: build stopped: subcommand failed.
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  /home/akilan/esp/esp-idf/tools/cmake/project.cmake:622 (__project)
+  CMakeLists.txt:6 (project)
+
+

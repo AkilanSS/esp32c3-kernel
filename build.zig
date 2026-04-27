@@ -9,7 +9,7 @@ pub fn build(b: *std.Build) void {
             .os_tag = .freestanding,
             .abi = .ilp32,
             .cpu_model = .{
-                .explicit = &target_riscv.cpu.baseline_rv32,
+                .explicit = &target_riscv.cpu.generic_rv32,
             },
             .cpu_features_add = target_riscv.featureSet(&.{
                 .m,
