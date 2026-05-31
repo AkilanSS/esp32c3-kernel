@@ -18,7 +18,7 @@ SECTIONS
     .text :
     {
         *(.text)
-        *(text.*)https://github.com/espressif/esp32c3-direct-boot-example/blob/main/ld/esp32c3/common.ld
+        *(text.*)
     }
     . = ALIGN(4);
     _irom_size = . - _irom_start;
