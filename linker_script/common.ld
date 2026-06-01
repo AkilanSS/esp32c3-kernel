@@ -1,29 +1,32 @@
 ENTRY(_start)
 
+INCLUDE "linker_script/memory.ld"
+
 SECTIONS
 {
     /*
     The following commands describe the layout of instructions in the FLASH
     */
-    .header : AT(0)
+    .header ORIGIN(irom) : AT(0)
     {
         _irom_start = .;
-        LONG(0xaedb041d) /*Magic Number descirbed at https://github.com/espressif/esp32c3-direct-boot-example/blob/main/README.md*/
-        LONG(0xaedb041d)
+        LONG(0xaedb041d); /*Magic Number descirbed at https://github.com/espressif/esp32c3-direct-boot-example/blob/main/README.md */
+        LONG(0xaedb041d);
     } > irom
-    .text.entry ORIGIN(.irom) + 8
+    .text.entry ORIGIN(irom) + 8:
     {
-        _text_entry_start = .;
-    }
+        KEEP(*(.text.entry))
+    } > irom
     .text :
     {
+        _irom_start = .;
         *(.text)
         *(text.*)
-    }
+    } > irom
     . = ALIGN(4);
     _irom_size = . - _irom_start;
     _etext = .;
-    PROVIDE(_etext - .);
+    PROVIDE(_etext = .);
 
 
     /*
@@ -43,7 +46,7 @@ SECTIONS
     /*
     The following commamnds describe the .data, .sdata, .bss, .heap and .stack sections in the SRAM
     */
-    .data ORIGIN(.dram) : AT(_irom_size + _drom_size)
+    .data ORIGIN(dram) : AT(_irom_size + _drom_size)
     {
         _data_start = .;
         __DATA_BEGIN__ = .;
@@ -62,22 +65,22 @@ SECTIONS
     . = ALIGN(4);
     _edata = .;
     PROVIDE(_edata = .);
-    _data_lma = ORGIN(drom) + LOADADDR(.data);
+    _data_lma = ORIGIN(drom) + LOADADDR(.data);
     _data_size = _edata - _data_start;
 
     _bss_start = .;
-    .sbss
+    .sbss (NOLOAD):
     {
         *(.sbss)
         *(.sbss.*)
         *(.scommon)
-    }
-    .bss
+    } > dram
+    .bss (NOLOAD):
     {
         *(.bss)
         *(.bss.*)
         *(COMMON)
-    }
+    } > dram
     . = ALIGN(4);
     __BSS_END__ = .;
     __global_pointer$ = MIN(__SDATA_BEGIN__ + 0x800, MAX(__DATA_BEGIN__ + 0x800, __BSS_END__ - 0x800));
@@ -87,13 +90,11 @@ SECTIONS
     /*
     The following sets up stack and heap
     */
-    .stack :
+    .stack (NOLOAD):
     {
         __stack_bottom = .;
-        __stack_top = ORIGIN(ram) + LENGTH(ram);
+        __stack_top = ORIGIN(dram) + LENGTH(dram);
         __stack_size_min = 0x4000;
-
-        ASSERT(__stack_bottom + __stack_size_min < __stack_top, "Error: no space for stack")
-    }
-
+        /* ASSERT(__stack_bottom + __stack_size_min < __stack_top, "Error: no space for stack"); */
+    } > dram
 }

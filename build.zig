@@ -26,13 +26,14 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
-    mod.addAssemblyFile(b.path("src/asm/startup.S"));
+    mod.addAssemblyFile(b.path("src/init/boot.S"));
 
     const elf = b.addExecutable(.{
         .name = "kernel.elf",
         .root_module = mod,
     });
 
-    elf.setLinkerScript(b.path("linker/linker.ld"));
+    elf.setLinkerScript(b.path("linker_script/common.ld"));
+    // elf.setLinkerScript(b.path("linker_script/memory.ld"));
     b.installArtifact(elf);
 }
