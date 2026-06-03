@@ -1,0 +1,18 @@
+
+zig-out/bin/kernel.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text.entry:
+
+42000008 <.text.entry>:
+42000008:	4505                	li	a0,1
+4200000a:	4585                	li	a1,1
+4200000c:	00b502b3          	add	t0,a0,a1
+42000010:	3fc81137          	lui	sp,0x3fc81
+42000014:	0040006f          	j	0x42000018
+
+Disassembly of section .text:
+
+42000018 <.text>:
+42000018:	0001                	nop
+4200001a:	bffd                	j	0x42000018

@@ -18,10 +18,10 @@ pub fn build(b: *std.Build) void {
         },
     });
 
-    const optimize = b.standardOptimizeOption(.{});
+    const optimize = std.builtin.OptimizeMode.ReleaseSmall;
 
     const mod = b.addModule("learning_bootloader_linker_frees", .{
-        .root_source_file = null,
+        .root_source_file = b.path("src/init/main.zig"),
         .target = target,
         .optimize = optimize,
     });

@@ -9,5 +9,5 @@ _start:
     
     add t0, a0, a1 # t0 = a0 + a1
     
-    .loop:
-        j .loop  # jump to loop
+    li sp, 0x3FC81000
+    j kmain
