@@ -1,0 +1,39 @@
+
+zig-out/bin/kernel.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text.entry:
+
+42000008 <.text.entry>:
+42000008:	3fce0137          	lui	sp,0x3fce0
+4200000c:	117d                	addi	sp,sp,-1 # 0x3fcdffff
+4200000e:	0040006f          	j	0x42000012
+
+Disassembly of section .text:
+
+42000012 <.text>:
+42000012:	60000537          	lui	a0,0x60000
+42000016:	5d2c                	lw	a1,120(a0)
+42000018:	00800637          	lui	a2,0x800
+4200001c:	8dd1                	or	a1,a1,a2
+4200001e:	600c0637          	lui	a2,0x600c0
+42000022:	dd2c                	sw	a1,120(a0)
+42000024:	4e0c                	lw	a1,24(a2)
+42000026:	0045e593          	ori	a1,a1,4
+4200002a:	ce0c                	sw	a1,24(a2)
+4200002c:	4e0c                	lw	a1,24(a2)
+4200002e:	99ed                	andi	a1,a1,-5
+42000030:	ce0c                	sw	a1,24(a2)
+42000032:	5d2c                	lw	a1,120(a0)
+42000034:	ff800637          	lui	a2,0xff800
+42000038:	167d                	addi	a2,a2,-1 # 0xff7fffff
+4200003a:	8df1                	and	a1,a1,a2
+4200003c:	dd2c                	sw	a1,120(a0)
+4200003e:	08052583          	lw	a1,128(a0) # 0x60000080
+42000042:	c0000637          	lui	a2,0xc0000
+42000046:	167d                	addi	a2,a2,-1 # 0xbfffffff
+42000048:	8df1                	and	a1,a1,a2
+4200004a:	04100613          	li	a2,65
+4200004e:	08b52023          	sw	a1,128(a0)
+42000052:	c110                	sw	a2,0(a0)
+42000054:	8082                	ret

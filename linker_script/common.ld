@@ -5,96 +5,74 @@ INCLUDE "linker_script/memory.ld"
 SECTIONS
 {
     /*
-    The following commands describe the layout of instructions in the FLASH
+    The following commands describe the layout of instructions and readonly data in the FLASH
     */
     .header ORIGIN(irom) : AT(0)
     {
         _irom_start = .;
         LONG(0xaedb041d); /*Magic Number descirbed at https://github.com/espressif/esp32c3-direct-boot-example/blob/main/README.md */
         LONG(0xaedb041d);
-    } > irom
-    .text.entry ORIGIN(irom) + 8:
+    }
+    
+    .text.entry ORIGIN(irom) + 8 :
     {
-        KEEP(*(.text.entry))
-    } > irom
+        *(.text.entry)
+    }
     .text :
     {
-        _irom_start = .;
         *(.text)
-        *(text.*)
-    } > irom
+        *(.text.*)
+    }
+
     . = ALIGN(4);
     _irom_size = . - _irom_start;
-    _etext = .;
-    PROVIDE(_etext = .);
-
-
-    /*
-    The following section described readonly data in the FLASH
-    */
     _drom_start = ORIGIN(drom) + _irom_size;
     .rodata _drom_start : AT(_irom_size)
     {
+        
         *(.rodata)
         *(.rodata.*)
         *(.srodata)
         *(.srodata.*)
-    } > drom
+        *(.eh_frame_hdr)
+        *(.eh_frame)
+    }
     _drom_size = . - _drom_start;
-
-
-    /*
-    The following commamnds describe the .data, .sdata, .bss, .heap and .stack sections in the SRAM
+    . = ALIGN(4);
+    /* 
+    The following commands describe the layout of SRAM 
     */
-    .data ORIGIN(dram) : AT(_irom_size + _drom_size)
+    .data ORIGIN(dram) :
     {
-        _data_start = .;
-        __DATA_BEGIN__ = .;
         *(.data)
         *(.data.*)
-    } > dram
+    }
+
     .data1 :
     {
         *(.data1)
-    } 
+    }
+
     .sdata :
     {
-        __SDATA_BEGIN__ = .;
         *(.sdata)
     }
-    . = ALIGN(4);
-    _edata = .;
-    PROVIDE(_edata = .);
-    _data_lma = ORIGIN(drom) + LOADADDR(.data);
-    _data_size = _edata - _data_start;
 
-    _bss_start = .;
-    .sbss (NOLOAD):
+    .sbss :
     {
         *(.sbss)
         *(.sbss.*)
         *(.scommon)
-    } > dram
-    .bss (NOLOAD):
+    }
+    .bss :
     {
         *(.bss)
         *(.bss.*)
         *(COMMON)
-    } > dram
-    . = ALIGN(4);
-    __BSS_END__ = .;
-    __global_pointer$ = MIN(__SDATA_BEGIN__ + 0x800, MAX(__DATA_BEGIN__ + 0x800, __BSS_END__ - 0x800));
-    _end = .;
-    PROVIDE(end = .);
+    }
 
     /*
-    The following sets up stack and heap
+    Initialize the kernel stack pointer at the end of the SRAM. At 0x3FCDFFFF.
     */
-    .stack (NOLOAD):
-    {
-        __stack_bottom = .;
-        __stack_top = ORIGIN(dram) + LENGTH(dram);
-        __stack_size_min = 0x4000;
-        /* ASSERT(__stack_bottom + __stack_size_min < __stack_top, "Error: no space for stack"); */
-    } > dram
-}
+    __stack_pointer = ORIGIN(dram) + LENGTH(dram); 
+} 
