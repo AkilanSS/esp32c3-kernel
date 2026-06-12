@@ -29,6 +29,8 @@ pub fn init(self: *Self, memory_space: *anyopaque) *Pool {
         node.next_pool = new_pool;
         node = new_pool;
     }
+
+    return self.head;
 }
 
 // Allocates a page of size 4KB by returning a pointer to it
@@ -39,6 +41,7 @@ pub fn alloc(self: *Self) *anyopaque {
 }
 
 // Frees a page
+// Adds the given address (hopefully the start of a page) as a Page to the linked list
 pub fn free(self: *Self, page: *anyopaque) noreturn {
     const page_to_free: *Pool = page;
     page_to_free.next_pool = self.head;
