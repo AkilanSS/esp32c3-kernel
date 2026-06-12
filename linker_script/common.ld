@@ -24,7 +24,7 @@ SECTIONS
         *(.text.*)
     }
 
-    . = ALIGN(4);
+    . = ALIGN(8);
     _irom_size = . - _irom_start;
     _drom_start = ORIGIN(drom) + _irom_size;
     .rodata _drom_start : AT(_irom_size)

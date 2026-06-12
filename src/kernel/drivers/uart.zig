@@ -1,7 +1,7 @@
 const UART_BASE_ADDR: u32 = 0x6000_0000;
 const SYSTEM_BASE_ADDR: u32 = 0x600C_0000;
 
-pub fn uart_init() void {
+pub fn init() void {
     // • (DEF) enable the clock for UART RAM by setting SYSTEM_UART_MEM_CLK_EN to 1;
     // • (DEF) enable APB_CLK for UARTn by setting SYSTEM_UARTn_CLK_EN to 1;
     // • (DEF) clear SYSTEM_UARTn_RST;
@@ -34,13 +34,13 @@ pub fn uart_init() void {
     UART_ID_REG.* &= ~@as(u32, 1 << 30);
 }
 
-pub fn uart_write(char: u8) void {
+pub fn write(char: u8) void {
     const UART_FIFO_REG: *volatile u32 = @ptrFromInt(UART_BASE_ADDR + 0x0000);
     UART_FIFO_REG.* = char;
 }
 
-pub fn uart_print(string: []const u8) void {
+pub fn print(string: []const u8) void {
     for (string) |char| {
-        uart_write(char);
+        write(char);
     }
 }

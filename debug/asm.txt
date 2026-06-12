@@ -2,6 +2,13 @@
 zig-out/bin/kernel.elf:     file format elf32-littleriscv
 
 
+Disassembly of section .header:
+
+42000000 <.header>:
+42000000:	041d                	addi	s0,s0,7
+42000002:	041daedb          	.insn	4, 0x041daedb
+42000006:	aedb                	.short	0xaedb
+
 Disassembly of section .text.entry:
 
 42000008 <.text.entry>:
@@ -12,28 +19,2400 @@ Disassembly of section .text.entry:
 Disassembly of section .text:
 
 42000012 <.text>:
-42000012:	60000537          	lui	a0,0x60000
-42000016:	5d2c                	lw	a1,120(a0)
-42000018:	00800637          	lui	a2,0x800
-4200001c:	8dd1                	or	a1,a1,a2
-4200001e:	600c0637          	lui	a2,0x600c0
+42000012:	1141                	addi	sp,sp,-16
+42000014:	c606                	sw	ra,12(sp)
+42000016:	60000537          	lui	a0,0x60000
+4200001a:	5d2c                	lw	a1,120(a0)
+4200001c:	00800637          	lui	a2,0x800
+42000020:	8dd1                	or	a1,a1,a2
 42000022:	dd2c                	sw	a1,120(a0)
-42000024:	4e0c                	lw	a1,24(a2)
-42000026:	0045e593          	ori	a1,a1,4
-4200002a:	ce0c                	sw	a1,24(a2)
-4200002c:	4e0c                	lw	a1,24(a2)
-4200002e:	99ed                	andi	a1,a1,-5
-42000030:	ce0c                	sw	a1,24(a2)
-42000032:	5d2c                	lw	a1,120(a0)
-42000034:	ff800637          	lui	a2,0xff800
-42000038:	167d                	addi	a2,a2,-1 # 0xff7fffff
-4200003a:	8df1                	and	a1,a1,a2
-4200003c:	dd2c                	sw	a1,120(a0)
-4200003e:	08052583          	lw	a1,128(a0) # 0x60000080
-42000042:	c0000637          	lui	a2,0xc0000
-42000046:	167d                	addi	a2,a2,-1 # 0xbfffffff
-42000048:	8df1                	and	a1,a1,a2
-4200004a:	04100613          	li	a2,65
+42000024:	600c05b7          	lui	a1,0x600c0
+42000028:	4d90                	lw	a2,24(a1)
+4200002a:	00466613          	ori	a2,a2,4
+4200002e:	cd90                	sw	a2,24(a1)
+42000030:	4d90                	lw	a2,24(a1)
+42000032:	9a6d                	andi	a2,a2,-5
+42000034:	cd90                	sw	a2,24(a1)
+42000036:	5d2c                	lw	a1,120(a0)
+42000038:	ff800637          	lui	a2,0xff800
+4200003c:	167d                	addi	a2,a2,-1 # 0xff7fffff
+4200003e:	8df1                	and	a1,a1,a2
+42000040:	dd2c                	sw	a1,120(a0)
+42000042:	08052583          	lw	a1,128(a0) # 0x60000080
+42000046:	c0000637          	lui	a2,0xc0000
+4200004a:	167d                	addi	a2,a2,-1 # 0xbfffffff
+4200004c:	8df1                	and	a1,a1,a2
 4200004e:	08b52023          	sw	a1,128(a0)
-42000052:	c110                	sw	a2,0(a0)
-42000054:	8082                	ret
+42000052:	3c000537          	lui	a0,0x3c000
+42000056:	09450513          	addi	a0,a0,148 # 0x3c000094
+4200005a:	6589                	lui	a1,0x2
+4200005c:	8e158593          	addi	a1,a1,-1823 # 0x18e1
+42000060:	00000097          	auipc	ra,0x0
+42000064:	020080e7          	jalr	32(ra) # 0x42000080
+42000068:	3c002537          	lui	a0,0x3c002
+4200006c:	97650513          	addi	a0,a0,-1674 # 0x3c001976
+42000070:	02000593          	li	a1,32
+42000074:	40b2                	lw	ra,12(sp)
+42000076:	0141                	addi	sp,sp,16
+42000078:	00000317          	auipc	t1,0x0
+4200007c:	00830067          	jr	8(t1) # 0x42000080
+42000080:	60000637          	lui	a2,0x60000
+42000084:	c599                	beqz	a1,0x42000092
+42000086:	00054683          	lbu	a3,0(a0)
+4200008a:	15fd                	addi	a1,a1,-1
+4200008c:	c214                	sw	a3,0(a2)
+4200008e:	0505                	addi	a0,a0,1
+42000090:	f9fd                	bnez	a1,0x42000086
+42000092:	8082                	ret
+
+Disassembly of section .rodata:
+
+3c000094 <.rodata>:
+3c000094:	a3e2                	.insn	2, 0xa3e2
+3c000096:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00009a:	a3e2                	.insn	2, 0xa3e2
+3c00009c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000a0:	a3e2                	.insn	2, 0xa3e2
+3c0000a2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000a6:	a3e2                	.insn	2, 0xa3e2
+3c0000a8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000ac:	a3e2                	.insn	2, 0xa3e2
+3c0000ae:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000b2:	a3e2                	.insn	2, 0xa3e2
+3c0000b4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000b8:	a3e2                	.insn	2, 0xa3e2
+3c0000ba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000be:	a3e2                	.insn	2, 0xa3e2
+3c0000c0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000c4:	a3e2                	.insn	2, 0xa3e2
+3c0000c6:	87a0e2bf          	.insn	4, 0x87a0e2bf
+3c0000ca:	a3e2                	.insn	2, 0xa3e2
+3c0000cc:	e2a0                	.insn	2, 0xe2a0
+3c0000ce:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c0000d2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000d6:	a3e2                	.insn	2, 0xa3e2
+3c0000d8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000dc:	a3e2                	.insn	2, 0xa3e2
+3c0000de:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000e2:	a3e2                	.insn	2, 0xa3e2
+3c0000e4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000e8:	a3e2                	.insn	2, 0xa3e2
+3c0000ea:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000ee:	a3e2                	.insn	2, 0xa3e2
+3c0000f0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000f4:	a3e2                	.insn	2, 0xa3e2
+3c0000f6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0000fa:	a3e2                	.insn	2, 0xa3e2
+3c0000fc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000100:	a3e2                	.insn	2, 0xa3e2
+3c000102:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000106:	a3e2                	.insn	2, 0xa3e2
+3c000108:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00010c:	a3e2                	.insn	2, 0xa3e2
+3c00010e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000112:	a3e2                	.insn	2, 0xa3e2
+3c000114:	b6a3e2b7          	lui	t0,0xb6a3e
+3c000118:	a3e2                	.insn	2, 0xa3e2
+3c00011a:	e28c                	.insn	2, 0xe28c
+3c00011c:	99a0                	.insn	2, 0x99a0
+3c00011e:	a2e2                	.insn	2, 0xa2e2
+3c000120:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000124:	a3e2                	.insn	2, 0xa3e2
+3c000126:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00012a:	a3e2                	.insn	2, 0xa3e2
+3c00012c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000130:	a3e2                	.insn	2, 0xa3e2
+3c000132:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000136:	a3e2                	.insn	2, 0xa3e2
+3c000138:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00013c:	a3e2                	.insn	2, 0xa3e2
+3c00013e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000142:	a3e2                	.insn	2, 0xa3e2
+3c000144:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000148:	a3e2                	.insn	2, 0xa3e2
+3c00014a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00014e:	a3e2                	.insn	2, 0xa3e2
+3c000150:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000154:	e20a                	.insn	2, 0xe20a
+3c000156:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00015a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00015e:	a3e2                	.insn	2, 0xa3e2
+3c000160:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000164:	a3e2                	.insn	2, 0xa3e2
+3c000166:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00016a:	a3e2                	.insn	2, 0xa3e2
+3c00016c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000170:	a3e2                	.insn	2, 0xa3e2
+3c000172:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000176:	a3e2                	.insn	2, 0xa3e2
+3c000178:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00017c:	a3e2                	.insn	2, 0xa3e2
+3c00017e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000182:	a0e2                	.insn	2, 0xa0e2
+3c000184:	a1a3e28b          	.insn	4, 0xa1a3e28b
+3c000188:	a3e2                	.insn	2, 0xa3e2
+3c00018a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00018e:	a3e2                	.insn	2, 0xa3e2
+3c000190:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000194:	a3e2                	.insn	2, 0xa3e2
+3c000196:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00019a:	a3e2                	.insn	2, 0xa3e2
+3c00019c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001a0:	a3e2                	.insn	2, 0xa3e2
+3c0001a2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001a6:	a3e2                	.insn	2, 0xa3e2
+3c0001a8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001ac:	a3e2                	.insn	2, 0xa3e2
+3c0001ae:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001b2:	a3e2                	.insn	2, 0xa3e2
+3c0001b4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001b8:	a3e2                	.insn	2, 0xa3e2
+3c0001ba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001be:	a3e2                	.insn	2, 0xa3e2
+3c0001c0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001c4:	a3e2                	.insn	2, 0xa3e2
+3c0001c6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001ca:	a3e2                	.insn	2, 0xa3e2
+3c0001cc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001d0:	a3e2                	.insn	2, 0xa3e2
+3c0001d2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001d6:	a3e2                	.insn	2, 0xa3e2
+3c0001d8:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c0001dc:	a3e2                	.insn	2, 0xa3e2
+3c0001de:	e2b6                	.insn	2, 0xe2b6
+3c0001e0:	a0e28ca3          	sb	a4,-1511(t0) # 0xb6a3da19
+3c0001e4:	e299                	bnez	a3,0x3c0001ea
+3c0001e6:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0001ea:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001ee:	a3e2                	.insn	2, 0xa3e2
+3c0001f0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001f4:	a3e2                	.insn	2, 0xa3e2
+3c0001f6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0001fa:	a3e2                	.insn	2, 0xa3e2
+3c0001fc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000200:	a3e2                	.insn	2, 0xa3e2
+3c000202:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000206:	a3e2                	.insn	2, 0xa3e2
+3c000208:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00020c:	a3e2                	.insn	2, 0xa3e2
+3c00020e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000212:	a3e2                	.insn	2, 0xa3e2
+3c000214:	a3e20abf          	.insn	4, 0xa3e20abf
+3c000218:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00021c:	a3e2                	.insn	2, 0xa3e2
+3c00021e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000222:	a3e2                	.insn	2, 0xa3e2
+3c000224:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000228:	a3e2                	.insn	2, 0xa3e2
+3c00022a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00022e:	a3e2                	.insn	2, 0xa3e2
+3c000230:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000234:	a3e2                	.insn	2, 0xa3e2
+3c000236:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00023a:	a3e2                	.insn	2, 0xa3e2
+3c00023c:	8fa0e2bf          	.insn	4, 0x8fa0e2bf
+3c000240:	a3e2                	.insn	2, 0xa3e2
+3c000242:	e2a0                	.insn	2, 0xe2a0
+3c000244:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c000248:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00024c:	a3e2                	.insn	2, 0xa3e2
+3c00024e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000252:	a3e2                	.insn	2, 0xa3e2
+3c000254:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000258:	a3e2                	.insn	2, 0xa3e2
+3c00025a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00025e:	a3e2                	.insn	2, 0xa3e2
+3c000260:	9fa1e2bf          	.insn	4, 0x9fa1e2bf
+3c000264:	a2e2                	.insn	2, 0xa2e2
+3c000266:	e2b9                	bnez	a3,0x3c0002ac
+3c000268:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00026c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000270:	a3e2                	.insn	2, 0xa3e2
+3c000272:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000276:	a3e2                	.insn	2, 0xa3e2
+3c000278:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00027c:	a3e2                	.insn	2, 0xa3e2
+3c00027e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000282:	a3e2                	.insn	2, 0xa3e2
+3c000284:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000288:	a3e2                	.insn	2, 0xa3e2
+3c00028a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00028e:	a3e2                	.insn	2, 0xa3e2
+3c000290:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000294:	a3e2                	.insn	2, 0xa3e2
+3c000296:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00029a:	a3e2                	.insn	2, 0xa3e2
+3c00029c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002a0:	a3e2                	.insn	2, 0xa3e2
+3c0002a2:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c0002a6:	a3e2                	.insn	2, 0xa3e2
+3c0002a8:	e28c                	.insn	2, 0xe28c
+3c0002aa:	bba0                	.insn	2, 0xbba0
+3c0002ac:	a3e2                	.insn	2, 0xa3e2
+3c0002ae:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002b2:	a3e2                	.insn	2, 0xa3e2
+3c0002b4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002b8:	a3e2                	.insn	2, 0xa3e2
+3c0002ba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002be:	a3e2                	.insn	2, 0xa3e2
+3c0002c0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002c4:	a3e2                	.insn	2, 0xa3e2
+3c0002c6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002ca:	a3e2                	.insn	2, 0xa3e2
+3c0002cc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002d0:	a3e2                	.insn	2, 0xa3e2
+3c0002d2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002d6:	e20a                	.insn	2, 0xe20a
+3c0002d8:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0002dc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002e0:	a3e2                	.insn	2, 0xa3e2
+3c0002e2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002e6:	a3e2                	.insn	2, 0xa3e2
+3c0002e8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002ec:	a3e2                	.insn	2, 0xa3e2
+3c0002ee:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002f2:	a3e2                	.insn	2, 0xa3e2
+3c0002f4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0002f8:	a3e2                	.insn	2, 0xa3e2
+3c0002fa:	83a0e2bf          	.insn	4, 0x83a0e2bf
+3c0002fe:	a3e2                	.insn	2, 0xa3e2
+3c000300:	e2bc                	.insn	2, 0xe2bc
+3c000302:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000306:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00030a:	a3e2                	.insn	2, 0xa3e2
+3c00030c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000310:	a3e2                	.insn	2, 0xa3e2
+3c000312:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000316:	a3e2                	.insn	2, 0xa3e2
+3c000318:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00031c:	a3e2                	.insn	2, 0xa3e2
+3c00031e:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c000322:	a0e2                	.insn	2, 0xa0e2
+3c000324:	e280                	.insn	2, 0xe280
+3c000326:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c00032a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00032e:	a3e2                	.insn	2, 0xa3e2
+3c000330:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000334:	a3e2                	.insn	2, 0xa3e2
+3c000336:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00033a:	a0e2                	.insn	2, 0xa0e2
+3c00033c:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c000340:	a3e2                	.insn	2, 0xa3e2
+3c000342:	9ba0e29f          	.insn	4, 0x9ba0e29f
+3c000346:	a2e2                	.insn	2, 0xa2e2
+3c000348:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00034c:	a3e2                	.insn	2, 0xa3e2
+3c00034e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000352:	a3e2                	.insn	2, 0xa3e2
+3c000354:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000358:	a3e2                	.insn	2, 0xa3e2
+3c00035a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00035e:	a3e2                	.insn	2, 0xa3e2
+3c000360:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000364:	a3e2                	.insn	2, 0xa3e2
+3c000366:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00036a:	a3e2                	.insn	2, 0xa3e2
+3c00036c:	a4a3e2a7          	.insn	4, 0xa4a3e2a7
+3c000370:	a1e2                	.insn	2, 0xa1e2
+3c000372:	e299                	bnez	a3,0x3c000378
+3c000374:	bfa0                	.insn	2, 0xbfa0
+3c000376:	a2e2                	.insn	2, 0xa2e2
+3c000378:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00037c:	a3e2                	.insn	2, 0xa3e2
+3c00037e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000382:	a3e2                	.insn	2, 0xa3e2
+3c000384:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000388:	a3e2                	.insn	2, 0xa3e2
+3c00038a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00038e:	a3e2                	.insn	2, 0xa3e2
+3c000390:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000394:	a3e2                	.insn	2, 0xa3e2
+3c000396:	a3e20abf          	.insn	4, 0xa3e20abf
+3c00039a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00039e:	a3e2                	.insn	2, 0xa3e2
+3c0003a0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003a4:	a3e2                	.insn	2, 0xa3e2
+3c0003a6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003aa:	a3e2                	.insn	2, 0xa3e2
+3c0003ac:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003b0:	a3e2                	.insn	2, 0xa3e2
+3c0003b2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003b6:	a3e2                	.insn	2, 0xa3e2
+3c0003b8:	83a0e2bf          	.insn	4, 0x83a0e2bf
+3c0003bc:	a3e2                	.insn	2, 0xa3e2
+3c0003be:	e2b8                	.insn	2, 0xe2b8
+3c0003c0:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0003c4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003c8:	a3e2                	.insn	2, 0xa3e2
+3c0003ca:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003ce:	a3e2                	.insn	2, 0xa3e2
+3c0003d0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003d4:	a0e2                	.insn	2, 0xa0e2
+3c0003d6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003da:	a3e2                	.insn	2, 0xa3e2
+3c0003dc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003e0:	a0e2                	.insn	2, 0xa0e2
+3c0003e2:	e281                	bnez	a3,0x3c0003e2
+3c0003e4:	80a0                	.insn	2, 0x80a0
+3c0003e6:	a2e2                	.insn	2, 0xa2e2
+3c0003e8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003ec:	a3e2                	.insn	2, 0xa3e2
+3c0003ee:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003f2:	a3e2                	.insn	2, 0xa3e2
+3c0003f4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0003f8:	a3e2                	.insn	2, 0xa3e2
+3c0003fa:	87a1e2bf          	.insn	4, 0x87a1e2bf
+3c0003fe:	a0e2                	.insn	2, 0xa0e2
+3c000400:	e2b8                	.insn	2, 0xe2b8
+3c000402:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000406:	88a0e2a7          	.insn	4, 0x88a0e2a7
+3c00040a:	a2e2                	.insn	2, 0xa2e2
+3c00040c:	bfa2e2bb          	.insn	4, 0xbfa2e2bb
+3c000410:	a3e2                	.insn	2, 0xa3e2
+3c000412:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000416:	a3e2                	.insn	2, 0xa3e2
+3c000418:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00041c:	a3e2                	.insn	2, 0xa3e2
+3c00041e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000422:	a0e2                	.insn	2, 0xa0e2
+3c000424:	9ba0e28f          	.insn	4, 0x9ba0e28f
+3c000428:	a3e2                	.insn	2, 0xa3e2
+3c00042a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00042e:	a3e2                	.insn	2, 0xa3e2
+3c000430:	99a0e2bf          	.insn	4, 0x99a0e2bf
+3c000434:	a2e2                	.insn	2, 0xa2e2
+3c000436:	82a3e293          	ori	t0,t2,-2006
+3c00043a:	a3e2                	.insn	2, 0xa3e2
+3c00043c:	e288                	.insn	2, 0xe288
+3c00043e:	a3e299a3          	sh	t5,-1485(t0)
+3c000442:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c000446:	a3e2                	.insn	2, 0xa3e2
+3c000448:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00044c:	a3e2                	.insn	2, 0xa3e2
+3c00044e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000452:	a3e2                	.insn	2, 0xa3e2
+3c000454:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000458:	e20a                	.insn	2, 0xe20a
+3c00045a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00045e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000462:	a3e2                	.insn	2, 0xa3e2
+3c000464:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000468:	a3e2                	.insn	2, 0xa3e2
+3c00046a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00046e:	a3e2                	.insn	2, 0xa3e2
+3c000470:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000474:	a3e2                	.insn	2, 0xa3e2
+3c000476:	83a0e2bf          	.insn	4, 0x83a0e2bf
+3c00047a:	a2e2                	.insn	2, 0xa2e2
+3c00047c:	e290                	.insn	2, 0xe290
+3c00047e:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000482:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000486:	a3e2                	.insn	2, 0xa3e2
+3c000488:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00048c:	a3e2                	.insn	2, 0xa3e2
+3c00048e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000492:	a0e2                	.insn	2, 0xa0e2
+3c000494:	bca3e283          	.insn	4, 0xbca3e283
+3c000498:	a3e2                	.insn	2, 0xa3e2
+3c00049a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00049e:	a0e2                	.insn	2, 0xa0e2
+3c0004a0:	b0a3e283          	.insn	4, 0xb0a3e283
+3c0004a4:	a1e2                	.insn	2, 0xa1e2
+3c0004a6:	e280                	.insn	2, 0xe280
+3c0004a8:	b8a2                	.insn	2, 0xb8a2
+3c0004aa:	a1e2                	.insn	2, 0xa1e2
+3c0004ac:	bfa3e28f          	.insn	4, 0xbfa3e28f
+3c0004b0:	a3e2                	.insn	2, 0xa3e2
+3c0004b2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0004b6:	a3e2                	.insn	2, 0xa3e2
+3c0004b8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0004bc:	a3e2                	.insn	2, 0xa3e2
+3c0004be:	80a0e2bf          	.insn	4, 0x80a0e2bf
+3c0004c2:	a0e2                	.insn	2, 0xa0e2
+3c0004c4:	e28d                	bnez	a3,0x3c0004e6
+3c0004c6:	bba0                	.insn	2, 0xbba0
+3c0004c8:	a3e2                	.insn	2, 0xa3e2
+3c0004ca:	e286                	.insn	2, 0xe286
+3c0004cc:	80a0                	.insn	2, 0x80a0
+3c0004ce:	a2e2                	.insn	2, 0xa2e2
+3c0004d0:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c0004d4:	a3e2                	.insn	2, 0xa3e2
+3c0004d6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0004da:	a3e2                	.insn	2, 0xa3e2
+3c0004dc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0004e0:	a3e2                	.insn	2, 0xa3e2
+3c0004e2:	86a1e2bf          	.insn	4, 0x86a1e2bf
+3c0004e6:	a2e2                	.insn	2, 0xa2e2
+3c0004e8:	e280                	.insn	2, 0xe280
+3c0004ea:	b9a0                	.insn	2, 0xb9a0
+3c0004ec:	a3e2                	.insn	2, 0xa3e2
+3c0004ee:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0004f2:	a3e2                	.insn	2, 0xa3e2
+3c0004f4:	e284                	.insn	2, 0xe284
+3c0004f6:	b9a0                	.insn	2, 0xb9a0
+3c0004f8:	a3e2                	.insn	2, 0xa3e2
+3c0004fa:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0004fe:	a3e2                	.insn	2, 0xa3e2
+3c000500:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000504:	a3e2                	.insn	2, 0xa3e2
+3c000506:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00050a:	a3e2                	.insn	2, 0xa3e2
+3c00050c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000510:	a3e2                	.insn	2, 0xa3e2
+3c000512:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000516:	a3e2                	.insn	2, 0xa3e2
+3c000518:	a3e20abf          	.insn	4, 0xa3e20abf
+3c00051c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000520:	a3e2                	.insn	2, 0xa3e2
+3c000522:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000526:	a3e2                	.insn	2, 0xa3e2
+3c000528:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00052c:	a3e2                	.insn	2, 0xa3e2
+3c00052e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000532:	a1e2                	.insn	2, 0xa1e2
+3c000534:	9fa0e2bf          	.insn	4, 0x9fa0e2bf
+3c000538:	a0e2                	.insn	2, 0xa0e2
+3c00053a:	e280                	.insn	2, 0xe280
+3c00053c:	b8a2                	.insn	2, 0xb8a2
+3c00053e:	a3e2                	.insn	2, 0xa3e2
+3c000540:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000544:	a3e2                	.insn	2, 0xa3e2
+3c000546:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00054a:	a3e2                	.insn	2, 0xa3e2
+3c00054c:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c000550:	a0e2                	.insn	2, 0xa0e2
+3c000552:	b8a3e283          	.insn	4, 0xb8a3e283
+3c000556:	a3e2                	.insn	2, 0xa3e2
+3c000558:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00055c:	a3e2                	.insn	2, 0xa3e2
+3c00055e:	b0a3e2af          	.insn	4, 0xb0a3e2af
+3c000562:	a1e2                	.insn	2, 0xa1e2
+3c000564:	a3a2e2bf          	.insn	4, 0xa3a2e2bf
+3c000568:	a0e2                	.insn	2, 0xa0e2
+3c00056a:	e288                	.insn	2, 0xe288
+3c00056c:	87a0                	.insn	2, 0x87a0
+3c00056e:	a3e2                	.insn	2, 0xa3e2
+3c000570:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000574:	a3e2                	.insn	2, 0xa3e2
+3c000576:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00057a:	a3e2                	.insn	2, 0xa3e2
+3c00057c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000580:	a3e2                	.insn	2, 0xa3e2
+3c000582:	80a0e2a7          	.insn	4, 0x80a0e2a7
+3c000586:	a2e2                	.insn	2, 0xa2e2
+3c000588:	e286                	.insn	2, 0xe286
+3c00058a:	98a0                	.insn	2, 0x98a0
+3c00058c:	a3e2                	.insn	2, 0xa3e2
+3c00058e:	80a1e2a7          	.insn	4, 0x80a1e2a7
+3c000592:	a2e2                	.insn	2, 0xa2e2
+3c000594:	e2b9                	bnez	a3,0x3c0005da
+3c000596:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00059a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00059e:	a3e2                	.insn	2, 0xa3e2
+3c0005a0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005a4:	a3e2                	.insn	2, 0xa3e2
+3c0005a6:	84a1e2bf          	.insn	4, 0x84a1e2bf
+3c0005aa:	a0e2                	.insn	2, 0xa0e2
+3c0005ac:	e284                	.insn	2, 0xe284
+3c0005ae:	bba2                	.insn	2, 0xbba2
+3c0005b0:	a3e2                	.insn	2, 0xa3e2
+3c0005b2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005b6:	a1e2                	.insn	2, 0xa1e2
+3c0005b8:	e286                	.insn	2, 0xe286
+3c0005ba:	bba2                	.insn	2, 0xbba2
+3c0005bc:	a3e2                	.insn	2, 0xa3e2
+3c0005be:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005c2:	a3e2                	.insn	2, 0xa3e2
+3c0005c4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005c8:	a3e2                	.insn	2, 0xa3e2
+3c0005ca:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005ce:	a3e2                	.insn	2, 0xa3e2
+3c0005d0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005d4:	a3e2                	.insn	2, 0xa3e2
+3c0005d6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005da:	e20a                	.insn	2, 0xe20a
+3c0005dc:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0005e0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005e4:	a3e2                	.insn	2, 0xa3e2
+3c0005e6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005ea:	a3e2                	.insn	2, 0xa3e2
+3c0005ec:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0005f0:	a3e2                	.insn	2, 0xa3e2
+3c0005f2:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c0005f6:	a0e2                	.insn	2, 0xa0e2
+3c0005f8:	e281                	bnez	a3,0x3c0005f8
+3c0005fa:	a3e2b8a3          	.insn	4, 0xa3e2b8a3
+3c0005fe:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000602:	a0e2                	.insn	2, 0xa0e2
+3c000604:	b4a3e287          	.insn	4, 0xb4a3e287
+3c000608:	a3e2                	.insn	2, 0xa3e2
+3c00060a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00060e:	a0e2                	.insn	2, 0xa0e2
+3c000610:	80a0e29b          	.insn	4, 0x80a0e29b
+3c000614:	a2e2                	.insn	2, 0xa2e2
+3c000616:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00061a:	a3e2                	.insn	2, 0xa3e2
+3c00061c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000620:	a1e2                	.insn	2, 0xa1e2
+3c000622:	81a2e2bf          	.insn	4, 0x81a2e2bf
+3c000626:	a0e2                	.insn	2, 0xa0e2
+3c000628:	e282                	.insn	2, 0xe282
+3c00062a:	a1e2a4a3          	sw	t5,-1527(t0)
+3c00062e:	e280                	.insn	2, 0xe280
+3c000630:	b9a2                	.insn	2, 0xb9a2
+3c000632:	a3e2                	.insn	2, 0xa3e2
+3c000634:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000638:	a3e2                	.insn	2, 0xa3e2
+3c00063a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00063e:	a3e2                	.insn	2, 0xa3e2
+3c000640:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000644:	a1e2                	.insn	2, 0xa1e2
+3c000646:	e280                	.insn	2, 0xe280
+3c000648:	b8a2                	.insn	2, 0xb8a2
+3c00064a:	a3e2                	.insn	2, 0xa3e2
+3c00064c:	88a1e2a7          	.insn	4, 0x88a1e2a7
+3c000650:	a2e2                	.insn	2, 0xa2e2
+3c000652:	e2a5                	bnez	a3,0x3c0006b2
+3c000654:	88a1                	andi	s1,s1,8
+3c000656:	a2e2                	.insn	2, 0xa2e2
+3c000658:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00065c:	a3e2                	.insn	2, 0xa3e2
+3c00065e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000662:	a3e2                	.insn	2, 0xa3e2
+3c000664:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000668:	a3e2                	.insn	2, 0xa3e2
+3c00066a:	80a0e2b7          	lui	t0,0x80a0e
+3c00066e:	a3e2                	.insn	2, 0xa3e2
+3c000670:	e280                	.insn	2, 0xe280
+3c000672:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000676:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00067a:	a0e2                	.insn	2, 0xa0e2
+3c00067c:	e298                	.insn	2, 0xe298
+3c00067e:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000682:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000686:	a3e2                	.insn	2, 0xa3e2
+3c000688:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00068c:	a3e2                	.insn	2, 0xa3e2
+3c00068e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000692:	a3e2                	.insn	2, 0xa3e2
+3c000694:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000698:	a3e2                	.insn	2, 0xa3e2
+3c00069a:	a3e20abf          	.insn	4, 0xa3e20abf
+3c00069e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0006a2:	a3e2                	.insn	2, 0xa3e2
+3c0006a4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0006a8:	a3e2                	.insn	2, 0xa3e2
+3c0006aa:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0006ae:	a3e2                	.insn	2, 0xa3e2
+3c0006b0:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c0006b4:	a0e2                	.insn	2, 0xa0e2
+3c0006b6:	e281                	bnez	a3,0x3c0006b6
+3c0006b8:	a0a2                	.insn	2, 0xa0a2
+3c0006ba:	a3e2                	.insn	2, 0xa3e2
+3c0006bc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0006c0:	a1e2                	.insn	2, 0xa1e2
+3c0006c2:	b0a2e29f          	.insn	4, 0xb0a2e29f
+3c0006c6:	a3e2                	.insn	2, 0xa3e2
+3c0006c8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0006cc:	a3e2                	.insn	2, 0xa3e2
+3c0006ce:	87a0e2bf          	.insn	4, 0x87a0e2bf
+3c0006d2:	a1e2                	.insn	2, 0xa1e2
+3c0006d4:	e291                	bnez	a3,0x3c0006d8
+3c0006d6:	a6a0                	.insn	2, 0xa6a0
+3c0006d8:	a3e2                	.insn	2, 0xa3e2
+3c0006da:	e288                	.insn	2, 0xe288
+3c0006dc:	9ba0                	.insn	2, 0x9ba0
+3c0006de:	a0e2                	.insn	2, 0xa0e2
+3c0006e0:	81a0e2bf          	.insn	4, 0x81a0e2bf
+3c0006e4:	a0e2                	.insn	2, 0xa0e2
+3c0006e6:	e280                	.insn	2, 0xe280
+3c0006e8:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c0006ec:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c0006f0:	a0e2                	.insn	2, 0xa0e2
+3c0006f2:	e298                	.insn	2, 0xe298
+3c0006f4:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0006f8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0006fc:	a3e2                	.insn	2, 0xa3e2
+3c0006fe:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000702:	a3e2                	.insn	2, 0xa3e2
+3c000704:	87a0e2bf          	.insn	4, 0x87a0e2bf
+3c000708:	a3e2                	.insn	2, 0xa3e2
+3c00070a:	e2bc                	.insn	2, 0xe2bc
+3c00070c:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000710:	84a0e2bf          	.insn	4, 0x84a0e2bf
+3c000714:	a0e2                	.insn	2, 0xa0e2
+3c000716:	e281                	bnez	a3,0x3c000716
+3c000718:	88a0                	.insn	2, 0x88a0
+3c00071a:	a2e2                	.insn	2, 0xa2e2
+3c00071c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000720:	a3e2                	.insn	2, 0xa3e2
+3c000722:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000726:	a3e2                	.insn	2, 0xa3e2
+3c000728:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00072c:	a1e2                	.insn	2, 0xa1e2
+3c00072e:	e286                	.insn	2, 0xe286
+3c000730:	b9a2                	.insn	2, 0xb9a2
+3c000732:	a3e2                	.insn	2, 0xa3e2
+3c000734:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000738:	a3e2                	.insn	2, 0xa3e2
+3c00073a:	84a1e2bf          	.insn	4, 0x84a1e2bf
+3c00073e:	a2e2                	.insn	2, 0xa2e2
+3c000740:	e2b9                	bnez	a3,0x3c000786
+3c000742:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000746:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00074a:	a3e2                	.insn	2, 0xa3e2
+3c00074c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000750:	a3e2                	.insn	2, 0xa3e2
+3c000752:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000756:	a3e2                	.insn	2, 0xa3e2
+3c000758:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00075c:	e20a                	.insn	2, 0xe20a
+3c00075e:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000762:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000766:	a3e2                	.insn	2, 0xa3e2
+3c000768:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00076c:	a3e2                	.insn	2, 0xa3e2
+3c00076e:	9fa0e2bf          	.insn	4, 0x9fa0e2bf
+3c000772:	a0e2                	.insn	2, 0xa0e2
+3c000774:	e280                	.insn	2, 0xe280
+3c000776:	80a2                	mv	ra,s0
+3c000778:	a1e2                	.insn	2, 0xa1e2
+3c00077a:	e2be                	.insn	2, 0xe2be
+3c00077c:	bba2                	.insn	2, 0xbba2
+3c00077e:	a3e2                	.insn	2, 0xa3e2
+3c000780:	87a0e2bf          	.insn	4, 0x87a0e2bf
+3c000784:	a1e2                	.insn	2, 0xa1e2
+3c000786:	e29e                	.insn	2, 0xe29e
+3c000788:	a9a2                	.insn	2, 0xa9a2
+3c00078a:	a3e2                	.insn	2, 0xa3e2
+3c00078c:	9fa1e2bf          	.insn	4, 0x9fa1e2bf
+3c000790:	a0e2                	.insn	2, 0xa0e2
+3c000792:	e2a0                	.insn	2, 0xe2a0
+3c000794:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000798:	a4a3e2b7          	lui	t0,0xa4a3e
+3c00079c:	a3e2                	.insn	2, 0xa3e2
+3c00079e:	e289                	bnez	a3,0x3c0007a0
+3c0007a0:	82a0                	.insn	2, 0x82a0
+3c0007a2:	a0e2                	.insn	2, 0xa0e2
+3c0007a4:	e280                	.insn	2, 0xe280
+3c0007a6:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c0007aa:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0007ae:	a3e2                	.insn	2, 0xa3e2
+3c0007b0:	86a3e2bf          	.insn	4, 0x86a3e2bf
+3c0007b4:	a2e2                	.insn	2, 0xa2e2
+3c0007b6:	e2b9                	bnez	a3,0x3c0007fc
+3c0007b8:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c0007bc:	e299                	bnez	a3,0x3c0007c2
+3c0007be:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0007c2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0007c6:	a1e2                	.insn	2, 0xa1e2
+3c0007c8:	e284                	.insn	2, 0xe284
+3c0007ca:	9ba2                	add	s7,s7,s0
+3c0007cc:	a3e2                	.insn	2, 0xa3e2
+3c0007ce:	b5a3e28b          	.insn	4, 0xb5a3e28b
+3c0007d2:	a3e2                	.insn	2, 0xa3e2
+3c0007d4:	e2be                	.insn	2, 0xe2be
+3c0007d6:	a1e2a6a3          	sw	t5,-1523(t0) # 0xa4a3da0d
+3c0007da:	e280                	.insn	2, 0xe280
+3c0007dc:	88a0                	.insn	2, 0x88a0
+3c0007de:	a2e2                	.insn	2, 0xa2e2
+3c0007e0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0007e4:	a3e2                	.insn	2, 0xa3e2
+3c0007e6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0007ea:	a3e2                	.insn	2, 0xa3e2
+3c0007ec:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c0007f0:	a0e2                	.insn	2, 0xa0e2
+3c0007f2:	e298                	.insn	2, 0xe298
+3c0007f4:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0007f8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0007fc:	a3e2                	.insn	2, 0xa3e2
+3c0007fe:	88a0e2bf          	.insn	4, 0x88a0e2bf
+3c000802:	a3e2                	.insn	2, 0xa3e2
+3c000804:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000808:	a3e2                	.insn	2, 0xa3e2
+3c00080a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00080e:	a3e2                	.insn	2, 0xa3e2
+3c000810:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000814:	a3e2                	.insn	2, 0xa3e2
+3c000816:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00081a:	a3e2                	.insn	2, 0xa3e2
+3c00081c:	a3e20abf          	.insn	4, 0xa3e20abf
+3c000820:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000824:	a3e2                	.insn	2, 0xa3e2
+3c000826:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00082a:	a0e2                	.insn	2, 0xa0e2
+3c00082c:	8ba2e29f          	.insn	4, 0x8ba2e29f
+3c000830:	a3e2                	.insn	2, 0xa3e2
+3c000832:	e2b4                	.insn	2, 0xe2b4
+3c000834:	86a1                	srai	a3,a3,0x8
+3c000836:	a0e2                	.insn	2, 0xa0e2
+3c000838:	e288                	.insn	2, 0xe288
+3c00083a:	a3e2a0a3          	sw	t5,-1503(t0)
+3c00083e:	e2be                	.insn	2, 0xe2be
+3c000840:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c000844:	e280                	.insn	2, 0xe280
+3c000846:	83a0                	.insn	2, 0x83a0
+3c000848:	a3e2                	.insn	2, 0xa3e2
+3c00084a:	e2be                	.insn	2, 0xe2be
+3c00084c:	bba2                	.insn	2, 0xbba2
+3c00084e:	a3e2                	.insn	2, 0xa3e2
+3c000850:	90a0e287          	.insn	4, 0x90a0e287
+3c000854:	a2e2                	.insn	2, 0xa2e2
+3c000856:	e2a4                	.insn	2, 0xe2a4
+3c000858:	99a1                	andi	a1,a1,-24
+3c00085a:	a0e2                	.insn	2, 0xa0e2
+3c00085c:	bfa1e2bb          	.insn	4, 0xbfa1e2bb
+3c000860:	a0e2                	.insn	2, 0xa0e2
+3c000862:	e281                	bnez	a3,0x3c000862
+3c000864:	a3e2b4a3          	.insn	4, 0xa3e2b4a3
+3c000868:	e2b6                	.insn	2, 0xe2b6
+3c00086a:	a3e2b6a3          	.insn	4, 0xa3e2b6a3
+3c00086e:	bfa3e2af          	.insn	4, 0xbfa3e2af
+3c000872:	a3e2                	.insn	2, 0xa3e2
+3c000874:	80a1e2bf          	.insn	4, 0x80a1e2bf
+3c000878:	a0e2                	.insn	2, 0xa0e2
+3c00087a:	e289                	bnez	a3,0x3c00087c
+3c00087c:	80a0                	.insn	2, 0x80a0
+3c00087e:	a2e2                	.insn	2, 0xa2e2
+3c000880:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c000884:	a3e2                	.insn	2, 0xa3e2
+3c000886:	87a1e2bf          	.insn	4, 0x87a1e2bf
+3c00088a:	a2e2                	.insn	2, 0xa2e2
+3c00088c:	e2b8                	.insn	2, 0xe2b8
+3c00088e:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000892:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000896:	a3e2                	.insn	2, 0xa3e2
+3c000898:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c00089c:	a1e2                	.insn	2, 0xa1e2
+3c00089e:	e284                	.insn	2, 0xe284
+3c0008a0:	88a0                	.insn	2, 0x88a0
+3c0008a2:	a2e2                	.insn	2, 0xa2e2
+3c0008a4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0008a8:	a3e2                	.insn	2, 0xa3e2
+3c0008aa:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0008ae:	a3e2                	.insn	2, 0xa3e2
+3c0008b0:	86a1e2bf          	.insn	4, 0x86a1e2bf
+3c0008b4:	a3e2                	.insn	2, 0xa3e2
+3c0008b6:	98a0e2bf          	.insn	4, 0x98a0e2bf
+3c0008ba:	a3e2                	.insn	2, 0xa3e2
+3c0008bc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0008c0:	a3e2                	.insn	2, 0xa3e2
+3c0008c2:	b8a0e2a7          	.insn	4, 0xb8a0e2a7
+3c0008c6:	a3e2                	.insn	2, 0xa3e2
+3c0008c8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0008cc:	a3e2                	.insn	2, 0xa3e2
+3c0008ce:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0008d2:	a3e2                	.insn	2, 0xa3e2
+3c0008d4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0008d8:	a3e2                	.insn	2, 0xa3e2
+3c0008da:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0008de:	e20a                	.insn	2, 0xe20a
+3c0008e0:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c0008e4:	9ba0e2bf          	.insn	4, 0x9ba0e2bf
+3c0008e8:	a0e2                	.insn	2, 0xa0e2
+3c0008ea:	e281                	bnez	a3,0x3c0008ea
+3c0008ec:	88a0                	.insn	2, 0x88a0
+3c0008ee:	a0e2                	.insn	2, 0xa0e2
+3c0008f0:	e289                	bnez	a3,0x3c0008f2
+3c0008f2:	84a0                	.insn	2, 0x84a0
+3c0008f4:	a0e2                	.insn	2, 0xa0e2
+3c0008f6:	e280                	.insn	2, 0xe280
+3c0008f8:	a3e2b0a3          	.insn	4, 0xa3e2b0a3
+3c0008fc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000900:	a1e2                	.insn	2, 0xa1e2
+3c000902:	80a0e2bf          	.insn	4, 0x80a0e2bf
+3c000906:	a2e2                	.insn	2, 0xa2e2
+3c000908:	e2b8                	.insn	2, 0xe2b8
+3c00090a:	87a1                	srai	a5,a5,0x8
+3c00090c:	a2e2                	.insn	2, 0xa2e2
+3c00090e:	e2b8                	.insn	2, 0xe2b8
+3c000910:	a2e2bfa3          	.insn	4, 0xa2e2bfa3
+3c000914:	e2b8                	.insn	2, 0xe2b8
+3c000916:	a3e2b6a3          	.insn	4, 0xa3e2b6a3
+3c00091a:	e28c                	.insn	2, 0xe28c
+3c00091c:	90a1                	srli	s1,s1,0x28
+3c00091e:	a0e2                	.insn	2, 0xa0e2
+3c000920:	e284                	.insn	2, 0xe284
+3c000922:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c000926:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00092a:	a3e2                	.insn	2, 0xa3e2
+3c00092c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000930:	a3e2                	.insn	2, 0xa3e2
+3c000932:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000936:	a3e2                	.insn	2, 0xa3e2
+3c000938:	80a0e287          	.insn	4, 0x80a0e287
+3c00093c:	a3e2                	.insn	2, 0xa3e2
+3c00093e:	88a1e2b7          	lui	t0,0x88a1e
+3c000942:	a0e2                	.insn	2, 0xa0e2
+3c000944:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c000948:	a1e2                	.insn	2, 0xa1e2
+3c00094a:	b8a2e287          	.insn	4, 0xb8a2e287
+3c00094e:	a3e2                	.insn	2, 0xa3e2
+3c000950:	bfa0e2bf          	.insn	4, 0xbfa0e2bf
+3c000954:	a3e2                	.insn	2, 0xa3e2
+3c000956:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00095a:	a3e2                	.insn	2, 0xa3e2
+3c00095c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000960:	a3e2                	.insn	2, 0xa3e2
+3c000962:	e286                	.insn	2, 0xe286
+3c000964:	88a0                	.insn	2, 0x88a0
+3c000966:	a3e2                	.insn	2, 0xa3e2
+3c000968:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00096c:	a3e2                	.insn	2, 0xa3e2
+3c00096e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000972:	a1e2                	.insn	2, 0xa1e2
+3c000974:	bfa3e287          	.insn	4, 0xbfa3e287
+3c000978:	a1e2                	.insn	2, 0xa1e2
+3c00097a:	e286                	.insn	2, 0xe286
+3c00097c:	bba2                	.insn	2, 0xbba2
+3c00097e:	a1e2                	.insn	2, 0xa1e2
+3c000980:	bba2e28f          	.insn	4, 0xbba2e28f
+3c000984:	a3e2                	.insn	2, 0xa3e2
+3c000986:	e280                	.insn	2, 0xe280
+3c000988:	b9a0                	.insn	2, 0xb9a0
+3c00098a:	a3e2                	.insn	2, 0xa3e2
+3c00098c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000990:	a3e2                	.insn	2, 0xa3e2
+3c000992:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000996:	a3e2                	.insn	2, 0xa3e2
+3c000998:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00099c:	a3e2                	.insn	2, 0xa3e2
+3c00099e:	a0e20abf          	.insn	4, 0xa0e20abf
+3c0009a2:	e280                	.insn	2, 0xe280
+3c0009a4:	80a0                	.insn	2, 0x80a0
+3c0009a6:	a0e2                	.insn	2, 0xa0e2
+3c0009a8:	e280                	.insn	2, 0xe280
+3c0009aa:	80a0                	.insn	2, 0x80a0
+3c0009ac:	a2e2                	.insn	2, 0xa2e2
+3c0009ae:	e2a4                	.insn	2, 0xe2a4
+3c0009b0:	a0e2b4a3          	.insn	4, 0xa0e2b4a3
+3c0009b4:	e280                	.insn	2, 0xe280
+3c0009b6:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c0009ba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0009be:	a3e2                	.insn	2, 0xa3e2
+3c0009c0:	83a0e2bf          	.insn	4, 0x83a0e2bf
+3c0009c4:	a0e2                	.insn	2, 0xa0e2
+3c0009c6:	e280                	.insn	2, 0xe280
+3c0009c8:	a1e2bfa3          	.insn	4, 0xa1e2bfa3
+3c0009cc:	b8a2e287          	.insn	4, 0xb8a2e287
+3c0009d0:	a3e2                	.insn	2, 0xa3e2
+3c0009d2:	88a0e2bf          	.insn	4, 0x88a0e2bf
+3c0009d6:	a3e2                	.insn	2, 0xa3e2
+3c0009d8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0009dc:	a0e2                	.insn	2, 0xa0e2
+3c0009de:	bca3e287          	.insn	4, 0xbca3e287
+3c0009e2:	a3e2                	.insn	2, 0xa3e2
+3c0009e4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0009e8:	a0e2                	.insn	2, 0xa0e2
+3c0009ea:	81a0e2bf          	.insn	4, 0x81a0e2bf
+3c0009ee:	a0e2                	.insn	2, 0xa0e2
+3c0009f0:	e2ac                	.insn	2, 0xe2ac
+3c0009f2:	a2e299a3          	sh	a4,-1485(t0) # 0x88a1da33
+3c0009f6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0009fa:	a1e2                	.insn	2, 0xa1e2
+3c0009fc:	e280                	.insn	2, 0xe280
+3c0009fe:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000a02:	84a3e2bf          	.insn	4, 0x84a3e2bf
+3c000a06:	a0e2                	.insn	2, 0xa0e2
+3c000a08:	e288                	.insn	2, 0xe288
+3c000a0a:	83a0                	.insn	2, 0x83a0
+3c000a0c:	a2e2                	.insn	2, 0xa2e2
+3c000a0e:	e2b8                	.insn	2, 0xe2b8
+3c000a10:	a0e2a7a3          	sw	a4,-1521(t0)
+3c000a14:	e28a                	.insn	2, 0xe28a
+3c000a16:	80a0                	.insn	2, 0x80a0
+3c000a18:	a0e2                	.insn	2, 0xa0e2
+3c000a1a:	e280                	.insn	2, 0xe280
+3c000a1c:	80a1                	srli	s1,s1,0x8
+3c000a1e:	a0e2                	.insn	2, 0xa0e2
+3c000a20:	e289                	bnez	a3,0x3c000a22
+3c000a22:	bba0                	.insn	2, 0xbba0
+3c000a24:	a3e2                	.insn	2, 0xa3e2
+3c000a26:	98a0e2a7          	.insn	4, 0x98a0e2a7
+3c000a2a:	a3e2                	.insn	2, 0xa3e2
+3c000a2c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000a30:	a3e2                	.insn	2, 0xa3e2
+3c000a32:	87a1e2bf          	.insn	4, 0x87a1e2bf
+3c000a36:	a3e2                	.insn	2, 0xa3e2
+3c000a38:	87a3e2bb          	.insn	4, 0x87a3e2bb
+3c000a3c:	a2e2                	.insn	2, 0xa2e2
+3c000a3e:	e2b8                	.insn	2, 0xe2b8
+3c000a40:	a1e2bfa3          	.insn	4, 0xa1e2bfa3
+3c000a44:	e284                	.insn	2, 0xe284
+3c000a46:	bba2                	.insn	2, 0xbba2
+3c000a48:	a3e2                	.insn	2, 0xa3e2
+3c000a4a:	e2a6                	.insn	2, 0xe2a6
+3c000a4c:	99a0                	.insn	2, 0x99a0
+3c000a4e:	a2e2                	.insn	2, 0xa2e2
+3c000a50:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000a54:	a3e2                	.insn	2, 0xa3e2
+3c000a56:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000a5a:	a3e2                	.insn	2, 0xa3e2
+3c000a5c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000a60:	e20a                	.insn	2, 0xe20a
+3c000a62:	80a0                	.insn	2, 0x80a0
+3c000a64:	a1e2                	.insn	2, 0xa1e2
+3c000a66:	e2b0                	.insn	2, 0xe2b0
+3c000a68:	80a0                	.insn	2, 0x80a0
+3c000a6a:	a3e2                	.insn	2, 0xa3e2
+3c000a6c:	e2b4                	.insn	2, 0xe2b4
+3c000a6e:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c000a72:	e281                	bnez	a3,0x3c000a72
+3c000a74:	a3e2b8a3          	.insn	4, 0xa3e2b8a3
+3c000a78:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000a7c:	a3e2                	.insn	2, 0xa3e2
+3c000a7e:	87a0e2bf          	.insn	4, 0x87a0e2bf
+3c000a82:	a0e2                	.insn	2, 0xa0e2
+3c000a84:	e280                	.insn	2, 0xe280
+3c000a86:	b8a2                	.insn	2, 0xb8a2
+3c000a88:	a3e2                	.insn	2, 0xa3e2
+3c000a8a:	87a1e2bf          	.insn	4, 0x87a1e2bf
+3c000a8e:	a2e2                	.insn	2, 0xa2e2
+3c000a90:	e2b8                	.insn	2, 0xe2b8
+3c000a92:	a1e2bfa3          	.insn	4, 0xa1e2bfa3
+3c000a96:	b9a2e287          	.insn	4, 0xb9a2e287
+3c000a9a:	a1e2                	.insn	2, 0xa1e2
+3c000a9c:	a0a2e2bf          	.insn	4, 0xa0a2e2bf
+3c000aa0:	a1e2                	.insn	2, 0xa1e2
+3c000aa2:	8ba0e2bf          	.insn	4, 0x8ba0e2bf
+3c000aa6:	a0e2                	.insn	2, 0xa0e2
+3c000aa8:	e280                	.insn	2, 0xe280
+3c000aaa:	a1e2a0a3          	sw	t5,-1535(t0)
+3c000aae:	e2a4                	.insn	2, 0xe2a4
+3c000ab0:	84a0                	.insn	2, 0x84a0
+3c000ab2:	a0e2                	.insn	2, 0xa0e2
+3c000ab4:	e288                	.insn	2, 0xe288
+3c000ab6:	a3e2bba3          	.insn	4, 0xa3e2bba3
+3c000aba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000abe:	a3e2                	.insn	2, 0xa3e2
+3c000ac0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000ac4:	a3e2                	.insn	2, 0xa3e2
+3c000ac6:	a6a3e2bf          	.insn	4, 0xa6a3e2bf
+3c000aca:	a0e2                	.insn	2, 0xa0e2
+3c000acc:	e280                	.insn	2, 0xe280
+3c000ace:	b8a2                	.insn	2, 0xb8a2
+3c000ad0:	a3e2                	.insn	2, 0xa3e2
+3c000ad2:	80a1e287          	.insn	4, 0x80a1e287
+3c000ad6:	a0e2                	.insn	2, 0xa0e2
+3c000ad8:	e280                	.insn	2, 0xe280
+3c000ada:	a0e2b7a3          	.insn	4, 0xa0e2b7a3
+3c000ade:	e288                	.insn	2, 0xe288
+3c000ae0:	b3a2                	.insn	2, 0xb3a2
+3c000ae2:	a3e2                	.insn	2, 0xa3e2
+3c000ae4:	e284                	.insn	2, 0xe284
+3c000ae6:	98a0                	.insn	2, 0x98a0
+3c000ae8:	a0e2                	.insn	2, 0xa0e2
+3c000aea:	b8a0e2a7          	.insn	4, 0xb8a0e2a7
+3c000aee:	a3e2                	.insn	2, 0xa3e2
+3c000af0:	8fa0e2bf          	.insn	4, 0x8fa0e2bf
+3c000af4:	a0e2                	.insn	2, 0xa0e2
+3c000af6:	e281                	bnez	a3,0x3c000af6
+3c000af8:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000afc:	88a0e2bf          	.insn	4, 0x88a0e2bf
+3c000b00:	a3e2                	.insn	2, 0xa3e2
+3c000b02:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c000b06:	a0e2                	.insn	2, 0xa0e2
+3c000b08:	e2a0                	.insn	2, 0xe2a0
+3c000b0a:	a3e28ca3          	sb	t5,-1479(t0)
+3c000b0e:	e291                	bnez	a3,0x3c000b12
+3c000b10:	80a0                	.insn	2, 0x80a0
+3c000b12:	a2e2                	.insn	2, 0xa2e2
+3c000b14:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c000b18:	a3e2                	.insn	2, 0xa3e2
+3c000b1a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000b1e:	a3e2                	.insn	2, 0xa3e2
+3c000b20:	a0e20abf          	.insn	4, 0xa0e20abf
+3c000b24:	e280                	.insn	2, 0xe280
+3c000b26:	87a1                	srai	a5,a5,0x8
+3c000b28:	a2e2                	.insn	2, 0xa2e2
+3c000b2a:	e2b0                	.insn	2, 0xe2b0
+3c000b2c:	a1e2bfa3          	.insn	4, 0xa1e2bfa3
+3c000b30:	a0a2e28f          	.insn	4, 0xa0a2e28f
+3c000b34:	a3e2                	.insn	2, 0xa3e2
+3c000b36:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000b3a:	a3e2                	.insn	2, 0xa3e2
+3c000b3c:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c000b40:	a0e2                	.insn	2, 0xa0e2
+3c000b42:	e280                	.insn	2, 0xe280
+3c000b44:	80a0                	.insn	2, 0x80a0
+3c000b46:	a2e2                	.insn	2, 0xa2e2
+3c000b48:	e2b8                	.insn	2, 0xe2b8
+3c000b4a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000b4e:	80a0e2b7          	lui	t0,0x80a0e
+3c000b52:	a2e2                	.insn	2, 0xa2e2
+3c000b54:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000b58:	a1e2                	.insn	2, 0xa1e2
+3c000b5a:	e280                	.insn	2, 0xe280
+3c000b5c:	83a0                	.insn	2, 0x83a0
+3c000b5e:	a1e2                	.insn	2, 0xa1e2
+3c000b60:	e2bc                	.insn	2, 0xe2bc
+3c000b62:	81a0                	.insn	2, 0x81a0
+3c000b64:	a3e2                	.insn	2, 0xa3e2
+3c000b66:	e2a0                	.insn	2, 0xe2a0
+3c000b68:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c000b6c:	80a0e28b          	.insn	4, 0x80a0e28b
+3c000b70:	a0e2                	.insn	2, 0xa0e2
+3c000b72:	e2b8                	.insn	2, 0xe2b8
+3c000b74:	97a0                	.insn	2, 0x97a0
+3c000b76:	a2e2                	.insn	2, 0xa2e2
+3c000b78:	e2b8                	.insn	2, 0xe2b8
+3c000b7a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000b7e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000b82:	a3e2                	.insn	2, 0xa3e2
+3c000b84:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000b88:	a3e2                	.insn	2, 0xa3e2
+3c000b8a:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c000b8e:	a3e2                	.insn	2, 0xa3e2
+3c000b90:	e2bc                	.insn	2, 0xe2bc
+3c000b92:	8fa1                	xor	a5,a5,s0
+3c000b94:	a0e2                	.insn	2, 0xa0e2
+3c000b96:	e280                	.insn	2, 0xe280
+3c000b98:	80a0                	.insn	2, 0x80a0
+3c000b9a:	a0e2                	.insn	2, 0xa0e2
+3c000b9c:	e280                	.insn	2, 0xe280
+3c000b9e:	80a0                	.insn	2, 0x80a0
+3c000ba0:	a0e2                	.insn	2, 0xa0e2
+3c000ba2:	e288                	.insn	2, 0xe288
+3c000ba4:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c000ba8:	e286                	.insn	2, 0xe286
+3c000baa:	b0a2                	.insn	2, 0xb0a2
+3c000bac:	a1e2                	.insn	2, 0xa1e2
+3c000bae:	e284                	.insn	2, 0xe284
+3c000bb0:	b9a2                	.insn	2, 0xb9a2
+3c000bb2:	a0e2                	.insn	2, 0xa0e2
+3c000bb4:	e280                	.insn	2, 0xe280
+3c000bb6:	80a2                	mv	ra,s0
+3c000bb8:	a3e2                	.insn	2, 0xa3e2
+3c000bba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000bbe:	a0e2                	.insn	2, 0xa0e2
+3c000bc0:	e280                	.insn	2, 0xe280
+3c000bc2:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000bc6:	86a3e2bf          	.insn	4, 0x86a3e2bf
+3c000bca:	a0e2                	.insn	2, 0xa0e2
+3c000bcc:	e298                	.insn	2, 0xe298
+3c000bce:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000bd2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000bd6:	a3e2                	.insn	2, 0xa3e2
+3c000bd8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000bdc:	a3e2                	.insn	2, 0xa3e2
+3c000bde:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000be2:	e20a                	.insn	2, 0xe20a
+3c000be4:	80a0                	.insn	2, 0x80a0
+3c000be6:	a1e2                	.insn	2, 0xa1e2
+3c000be8:	b8a2e287          	.insn	4, 0xb8a2e287
+3c000bec:	a3e2                	.insn	2, 0xa3e2
+3c000bee:	81a0e2bf          	.insn	4, 0x81a0e2bf
+3c000bf2:	a3e2                	.insn	2, 0xa3e2
+3c000bf4:	e2be                	.insn	2, 0xe2be
+3c000bf6:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000bfa:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000bfe:	a1e2                	.insn	2, 0xa1e2
+3c000c00:	80a0e287          	.insn	4, 0x80a0e287
+3c000c04:	a0e2                	.insn	2, 0xa0e2
+3c000c06:	e280                	.insn	2, 0xe280
+3c000c08:	88a0                	.insn	2, 0x88a0
+3c000c0a:	a3e2                	.insn	2, 0xa3e2
+3c000c0c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000c10:	a3e2                	.insn	2, 0xa3e2
+3c000c12:	e286                	.insn	2, 0xe286
+3c000c14:	98a0                	.insn	2, 0x98a0
+3c000c16:	a3e2                	.insn	2, 0xa3e2
+3c000c18:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c000c1c:	a0e2                	.insn	2, 0xa0e2
+3c000c1e:	e280                	.insn	2, 0xe280
+3c000c20:	87a1                	srai	a5,a5,0x8
+3c000c22:	a0e2                	.insn	2, 0xa0e2
+3c000c24:	e280                	.insn	2, 0xe280
+3c000c26:	a1e2bfa3          	.insn	4, 0xa1e2bfa3
+3c000c2a:	80a0e28f          	.insn	4, 0x80a0e28f
+3c000c2e:	a0e2                	.insn	2, 0xa0e2
+3c000c30:	e280                	.insn	2, 0xe280
+3c000c32:	80a0                	.insn	2, 0x80a0
+3c000c34:	a0e2                	.insn	2, 0xa0e2
+3c000c36:	e280                	.insn	2, 0xe280
+3c000c38:	b8a2                	.insn	2, 0xb8a2
+3c000c3a:	a3e2                	.insn	2, 0xa3e2
+3c000c3c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000c40:	a3e2                	.insn	2, 0xa3e2
+3c000c42:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000c46:	a3e2                	.insn	2, 0xa3e2
+3c000c48:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000c4c:	a3e2                	.insn	2, 0xa3e2
+3c000c4e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000c52:	a3e2                	.insn	2, 0xa3e2
+3c000c54:	80a0e2a7          	.insn	4, 0x80a0e2a7
+3c000c58:	a0e2                	.insn	2, 0xa0e2
+3c000c5a:	e2a4                	.insn	2, 0xe2a4
+3c000c5c:	90a0                	.insn	2, 0x90a0
+3c000c5e:	a0e2                	.insn	2, 0xa0e2
+3c000c60:	e280                	.insn	2, 0xe280
+3c000c62:	b8a2                	.insn	2, 0xb8a2
+3c000c64:	a3e2                	.insn	2, 0xa3e2
+3c000c66:	b4a3e2bf          	.insn	4, 0xb4a3e2bf
+3c000c6a:	a3e2                	.insn	2, 0xa3e2
+3c000c6c:	97a1e2bf          	.insn	4, 0x97a1e2bf
+3c000c70:	a0e2                	.insn	2, 0xa0e2
+3c000c72:	e288                	.insn	2, 0xe288
+3c000c74:	a0a2                	.insn	2, 0xa0a2
+3c000c76:	a3e2                	.insn	2, 0xa3e2
+3c000c78:	e2be                	.insn	2, 0xe2be
+3c000c7a:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c000c7e:	80a0e29b          	.insn	4, 0x80a0e29b
+3c000c82:	a2e2                	.insn	2, 0xa2e2
+3c000c84:	e2b9                	bnez	a3,0x3c000cca
+3c000c86:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000c8a:	87a1e2bf          	.insn	4, 0x87a1e2bf
+3c000c8e:	a2e2                	.insn	2, 0xa2e2
+3c000c90:	e2b9                	bnez	a3,0x3c000cd6
+3c000c92:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000c96:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000c9a:	a3e2                	.insn	2, 0xa3e2
+3c000c9c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000ca0:	a3e2                	.insn	2, 0xa3e2
+3c000ca2:	a0e20abf          	.insn	4, 0xa0e20abf
+3c000ca6:	e280                	.insn	2, 0xe280
+3c000ca8:	a0e2a7a3          	sw	a4,-1521(t0) # 0x80a0da0f
+3c000cac:	e280                	.insn	2, 0xe280
+3c000cae:	a1e2bfa3          	.insn	4, 0xa1e2bfa3
+3c000cb2:	e280                	.insn	2, 0xe280
+3c000cb4:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000cb8:	9fa0e2bf          	.insn	4, 0x9fa0e2bf
+3c000cbc:	a3e2                	.insn	2, 0xa3e2
+3c000cbe:	87a1e2bf          	.insn	4, 0x87a1e2bf
+3c000cc2:	a0e2                	.insn	2, 0xa0e2
+3c000cc4:	e280                	.insn	2, 0xe280
+3c000cc6:	80a2                	mv	ra,s0
+3c000cc8:	a0e2                	.insn	2, 0xa0e2
+3c000cca:	e280                	.insn	2, 0xe280
+3c000ccc:	bba2                	.insn	2, 0xbba2
+3c000cce:	a3e2                	.insn	2, 0xa3e2
+3c000cd0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000cd4:	a3e2                	.insn	2, 0xa3e2
+3c000cd6:	e286                	.insn	2, 0xe286
+3c000cd8:	98a0                	.insn	2, 0x98a0
+3c000cda:	a3e2                	.insn	2, 0xa3e2
+3c000cdc:	86a1e2bf          	.insn	4, 0x86a1e2bf
+3c000ce0:	a2e2                	.insn	2, 0xa2e2
+3c000ce2:	e2b9                	bnez	a3,0x3c000d28
+3c000ce4:	a3e2b6a3          	.insn	4, 0xa3e2b6a3
+3c000ce8:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c000cec:	a0e2                	.insn	2, 0xa0e2
+3c000cee:	e2b0                	.insn	2, 0xe2b0
+3c000cf0:	80a0                	.insn	2, 0x80a0
+3c000cf2:	a0e2                	.insn	2, 0xa0e2
+3c000cf4:	e281                	bnez	a3,0x3c000cf4
+3c000cf6:	81a0                	.insn	2, 0x81a0
+3c000cf8:	a3e2                	.insn	2, 0xa3e2
+3c000cfa:	e2b8                	.insn	2, 0xe2b8
+3c000cfc:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000d00:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d04:	a3e2                	.insn	2, 0xa3e2
+3c000d06:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d0a:	a3e2                	.insn	2, 0xa3e2
+3c000d0c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d10:	a3e2                	.insn	2, 0xa3e2
+3c000d12:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d16:	a3e2                	.insn	2, 0xa3e2
+3c000d18:	b6a3e2b7          	lui	t0,0xb6a3e
+3c000d1c:	a3e2                	.insn	2, 0xa3e2
+3c000d1e:	e2a4                	.insn	2, 0xe2a4
+3c000d20:	a3e2a4a3          	sw	t5,-1495(t0) # 0xb6a3da29
+3c000d24:	e2be                	.insn	2, 0xe2be
+3c000d26:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000d2a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d2e:	a0e2                	.insn	2, 0xa0e2
+3c000d30:	a0a2e287          	.insn	4, 0xa0a2e287
+3c000d34:	a3e2                	.insn	2, 0xa3e2
+3c000d36:	9fa1e2bf          	.insn	4, 0x9fa1e2bf
+3c000d3a:	a2e2                	.insn	2, 0xa2e2
+3c000d3c:	e281                	bnez	a3,0x3c000d3c
+3c000d3e:	80a1                	srli	s1,s1,0x8
+3c000d40:	a0e2                	.insn	2, 0xa0e2
+3c000d42:	e280                	.insn	2, 0xe280
+3c000d44:	b8a0                	.insn	2, 0xb8a0
+3c000d46:	a3e2                	.insn	2, 0xa3e2
+3c000d48:	9fa0e2bf          	.insn	4, 0x9fa0e2bf
+3c000d4c:	a0e2                	.insn	2, 0xa0e2
+3c000d4e:	e281                	bnez	a3,0x3c000d4e
+3c000d50:	88a0                	.insn	2, 0x88a0
+3c000d52:	a3e2                	.insn	2, 0xa3e2
+3c000d54:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d58:	a3e2                	.insn	2, 0xa3e2
+3c000d5a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d5e:	a3e2                	.insn	2, 0xa3e2
+3c000d60:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d64:	e20a                	.insn	2, 0xe20a
+3c000d66:	a2e286a3          	sb	a4,-1491(t0)
+3c000d6a:	e2b8                	.insn	2, 0xe2b8
+3c000d6c:	87a1                	srai	a5,a5,0x8
+3c000d6e:	a2e2                	.insn	2, 0xa2e2
+3c000d70:	e2b9                	bnez	a3,0x3c000db6
+3c000d72:	87a1                	srai	a5,a5,0x8
+3c000d74:	a2e2                	.insn	2, 0xa2e2
+3c000d76:	87a1e2bf          	.insn	4, 0x87a1e2bf
+3c000d7a:	a0e2                	.insn	2, 0xa0e2
+3c000d7c:	e280                	.insn	2, 0xe280
+3c000d7e:	9ba0                	.insn	2, 0x9ba0
+3c000d80:	a0e2                	.insn	2, 0xa0e2
+3c000d82:	b4a3e283          	.insn	4, 0xb4a3e283
+3c000d86:	a3e2                	.insn	2, 0xa3e2
+3c000d88:	80a1e2bf          	.insn	4, 0x80a1e2bf
+3c000d8c:	a3e2                	.insn	2, 0xa3e2
+3c000d8e:	e2be                	.insn	2, 0xe2be
+3c000d90:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000d94:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000d98:	a3e2                	.insn	2, 0xa3e2
+3c000d9a:	88a1e2a7          	.insn	4, 0x88a1e2a7
+3c000d9e:	a2e2                	.insn	2, 0xa2e2
+3c000da0:	84a1e2bf          	.insn	4, 0x84a1e2bf
+3c000da4:	a2e2                	.insn	2, 0xa2e2
+3c000da6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000daa:	a3e2                	.insn	2, 0xa3e2
+3c000dac:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c000db0:	a3e2                	.insn	2, 0xa3e2
+3c000db2:	e2a4                	.insn	2, 0xe2a4
+3c000db4:	a3e2b6a3          	.insn	4, 0xa3e2b6a3
+3c000db8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000dbc:	a3e2                	.insn	2, 0xa3e2
+3c000dbe:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000dc2:	a3e2                	.insn	2, 0xa3e2
+3c000dc4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000dc8:	a3e2                	.insn	2, 0xa3e2
+3c000dca:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000dce:	a3e2                	.insn	2, 0xa3e2
+3c000dd0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000dd4:	a3e2                	.insn	2, 0xa3e2
+3c000dd6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000dda:	a3e2                	.insn	2, 0xa3e2
+3c000ddc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000de0:	a3e2                	.insn	2, 0xa3e2
+3c000de2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000de6:	a3e2                	.insn	2, 0xa3e2
+3c000de8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000dec:	a1e2                	.insn	2, 0xa1e2
+3c000dee:	a0a2e29f          	.insn	4, 0xa0a2e29f
+3c000df2:	a3e2                	.insn	2, 0xa3e2
+3c000df4:	8fa0e2bf          	.insn	4, 0x8fa0e2bf
+3c000df8:	a2e2                	.insn	2, 0xa2e2
+3c000dfa:	e280                	.insn	2, 0xe280
+3c000dfc:	8ba0                	.insn	2, 0x8ba0
+3c000dfe:	a2e2                	.insn	2, 0xa2e2
+3c000e00:	e2a0                	.insn	2, 0xe2a0
+3c000e02:	a3e2a4a3          	sw	t5,-1495(t0)
+3c000e06:	e2a4                	.insn	2, 0xe2a4
+3c000e08:	a1e2a4a3          	sw	t5,-1527(t0)
+3c000e0c:	e280                	.insn	2, 0xe280
+3c000e0e:	b7a2                	.insn	2, 0xb7a2
+3c000e10:	a0e2                	.insn	2, 0xa0e2
+3c000e12:	e280                	.insn	2, 0xe280
+3c000e14:	a3e2b9a3          	.insn	4, 0xa3e2b9a3
+3c000e18:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e1c:	a3e2                	.insn	2, 0xa3e2
+3c000e1e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e22:	a3e2                	.insn	2, 0xa3e2
+3c000e24:	a3e20abf          	.insn	4, 0xa3e20abf
+3c000e28:	80a1e2bf          	.insn	4, 0x80a1e2bf
+3c000e2c:	a2e2                	.insn	2, 0xa2e2
+3c000e2e:	80a0e2bb          	.insn	4, 0x80a0e2bb
+3c000e32:	a3e2                	.insn	2, 0xa3e2
+3c000e34:	98a0e2a7          	.insn	4, 0x98a0e2a7
+3c000e38:	a0e2                	.insn	2, 0xa0e2
+3c000e3a:	e280                	.insn	2, 0xe280
+3c000e3c:	80a0                	.insn	2, 0x80a0
+3c000e3e:	a0e2                	.insn	2, 0xa0e2
+3c000e40:	e280                	.insn	2, 0xe280
+3c000e42:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c000e46:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e4a:	a3e2                	.insn	2, 0xa3e2
+3c000e4c:	98a0e2a7          	.insn	4, 0x98a0e2a7
+3c000e50:	a0e2                	.insn	2, 0xa0e2
+3c000e52:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c000e56:	a3e2                	.insn	2, 0xa3e2
+3c000e58:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e5c:	a3e2                	.insn	2, 0xa3e2
+3c000e5e:	a6a3e2bf          	.insn	4, 0xa6a3e2bf
+3c000e62:	a1e2                	.insn	2, 0xa1e2
+3c000e64:	e289                	bnez	a3,0x3c000e66
+3c000e66:	80a0                	.insn	2, 0x80a0
+3c000e68:	a2e2                	.insn	2, 0xa2e2
+3c000e6a:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c000e6e:	a3e2                	.insn	2, 0xa3e2
+3c000e70:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e74:	a3e2                	.insn	2, 0xa3e2
+3c000e76:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e7a:	a3e2                	.insn	2, 0xa3e2
+3c000e7c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e80:	a3e2                	.insn	2, 0xa3e2
+3c000e82:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e86:	a3e2                	.insn	2, 0xa3e2
+3c000e88:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e8c:	a3e2                	.insn	2, 0xa3e2
+3c000e8e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e92:	a3e2                	.insn	2, 0xa3e2
+3c000e94:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e98:	a3e2                	.insn	2, 0xa3e2
+3c000e9a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000e9e:	a3e2                	.insn	2, 0xa3e2
+3c000ea0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000ea4:	a3e2                	.insn	2, 0xa3e2
+3c000ea6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000eaa:	a0e2                	.insn	2, 0xa0e2
+3c000eac:	80a0e28b          	.insn	4, 0x80a0e28b
+3c000eb0:	a0e2                	.insn	2, 0xa0e2
+3c000eb2:	e29a                	.insn	2, 0xe29a
+3c000eb4:	a3e283a3          	sb	t5,-1497(t0)
+3c000eb8:	e280                	.insn	2, 0xe280
+3c000eba:	a3e2a4a3          	sw	t5,-1495(t0)
+3c000ebe:	e2a4                	.insn	2, 0xe2a4
+3c000ec0:	a3e2a4a3          	sw	t5,-1495(t0)
+3c000ec4:	e2bc                	.insn	2, 0xe2bc
+3c000ec6:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000eca:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000ece:	a0e2                	.insn	2, 0xa0e2
+3c000ed0:	e290                	.insn	2, 0xe290
+3c000ed2:	a0a2                	.insn	2, 0xa0a2
+3c000ed4:	a3e2                	.insn	2, 0xa3e2
+3c000ed6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000eda:	a3e2                	.insn	2, 0xa3e2
+3c000edc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000ee0:	a3e2                	.insn	2, 0xa3e2
+3c000ee2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000ee6:	e20a                	.insn	2, 0xe20a
+3c000ee8:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000eec:	98a0e2a7          	.insn	4, 0x98a0e2a7
+3c000ef0:	a3e2                	.insn	2, 0xa3e2
+3c000ef2:	b8a0e2a7          	.insn	4, 0xb8a0e2a7
+3c000ef6:	a1e2                	.insn	2, 0xa1e2
+3c000ef8:	e286                	.insn	2, 0xe286
+3c000efa:	80a0                	.insn	2, 0x80a0
+3c000efc:	a0e2                	.insn	2, 0xa0e2
+3c000efe:	e288                	.insn	2, 0xe288
+3c000f00:	b8a2                	.insn	2, 0xb8a2
+3c000f02:	a3e2                	.insn	2, 0xa3e2
+3c000f04:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f08:	a3e2                	.insn	2, 0xa3e2
+3c000f0a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f0e:	a3e2                	.insn	2, 0xa3e2
+3c000f10:	e286                	.insn	2, 0xe286
+3c000f12:	99a0                	.insn	2, 0x99a0
+3c000f14:	a2e2                	.insn	2, 0xa2e2
+3c000f16:	e2b9                	bnez	a3,0x3c000f5c
+3c000f18:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000f1c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f20:	a3e2                	.insn	2, 0xa3e2
+3c000f22:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f26:	a3e2                	.insn	2, 0xa3e2
+3c000f28:	e2b6                	.insn	2, 0xe2b6
+3c000f2a:	a0e284a3          	sb	a4,-1527(t0)
+3c000f2e:	bfa2e2bb          	.insn	4, 0xbfa2e2bb
+3c000f32:	a3e2                	.insn	2, 0xa3e2
+3c000f34:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f38:	a3e2                	.insn	2, 0xa3e2
+3c000f3a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f3e:	a3e2                	.insn	2, 0xa3e2
+3c000f40:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f44:	a3e2                	.insn	2, 0xa3e2
+3c000f46:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f4a:	a3e2                	.insn	2, 0xa3e2
+3c000f4c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f50:	a3e2                	.insn	2, 0xa3e2
+3c000f52:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f56:	a3e2                	.insn	2, 0xa3e2
+3c000f58:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f5c:	a3e2                	.insn	2, 0xa3e2
+3c000f5e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f62:	a3e2                	.insn	2, 0xa3e2
+3c000f64:	9fa1e2bf          	.insn	4, 0x9fa1e2bf
+3c000f68:	a2e2                	.insn	2, 0xa2e2
+3c000f6a:	e281                	bnez	a3,0x3c000f6a
+3c000f6c:	a3e2a4a3          	sw	t5,-1495(t0)
+3c000f70:	e2b6                	.insn	2, 0xe2b6
+3c000f72:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000f76:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f7a:	a3e2                	.insn	2, 0xa3e2
+3c000f7c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f80:	a3e2                	.insn	2, 0xa3e2
+3c000f82:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f86:	a3e2                	.insn	2, 0xa3e2
+3c000f88:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f8c:	a3e2                	.insn	2, 0xa3e2
+3c000f8e:	80a0e2bf          	.insn	4, 0x80a0e2bf
+3c000f92:	a0e2                	.insn	2, 0xa0e2
+3c000f94:	e298                	.insn	2, 0xe298
+3c000f96:	bfa2                	.insn	2, 0xbfa2
+3c000f98:	a3e2                	.insn	2, 0xa3e2
+3c000f9a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000f9e:	a3e2                	.insn	2, 0xa3e2
+3c000fa0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000fa4:	a3e2                	.insn	2, 0xa3e2
+3c000fa6:	a3e20abf          	.insn	4, 0xa3e20abf
+3c000faa:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000fae:	a3e2                	.insn	2, 0xa3e2
+3c000fb0:	b9a0e287          	.insn	4, 0xb9a0e287
+3c000fb4:	a1e2                	.insn	2, 0xa1e2
+3c000fb6:	e286                	.insn	2, 0xe286
+3c000fb8:	b9a0                	.insn	2, 0xb9a0
+3c000fba:	a0e2                	.insn	2, 0xa0e2
+3c000fbc:	80a3e283          	.insn	4, 0x80a3e283
+3c000fc0:	a3e2                	.insn	2, 0xa3e2
+3c000fc2:	e288                	.insn	2, 0xe288
+3c000fc4:	a3e29ba3          	sh	t5,-1481(t0)
+3c000fc8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000fcc:	a3e2                	.insn	2, 0xa3e2
+3c000fce:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000fd2:	a0e2                	.insn	2, 0xa0e2
+3c000fd4:	80a0e2b7          	lui	t0,0x80a0e
+3c000fd8:	a3e2                	.insn	2, 0xa3e2
+3c000fda:	e289                	bnez	a3,0x3c000fdc
+3c000fdc:	a1e289a3          	sb	t5,-1517(t0) # 0x80a0da13
+3c000fe0:	e299                	bnez	a3,0x3c000fe6
+3c000fe2:	9ba0                	.insn	2, 0x9ba0
+3c000fe4:	a0e2                	.insn	2, 0xa0e2
+3c000fe6:	bba0e29b          	.insn	4, 0xbba0e29b
+3c000fea:	a2e2                	.insn	2, 0xa2e2
+3c000fec:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c000ff0:	a3e2                	.insn	2, 0xa3e2
+3c000ff2:	e2a4                	.insn	2, 0xe2a4
+3c000ff4:	90a1                	srli	s1,s1,0x28
+3c000ff6:	a3e2                	.insn	2, 0xa3e2
+3c000ff8:	e2be                	.insn	2, 0xe2be
+3c000ffa:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c000ffe:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001002:	a3e2                	.insn	2, 0xa3e2
+3c001004:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001008:	a3e2                	.insn	2, 0xa3e2
+3c00100a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00100e:	a0e2                	.insn	2, 0xa0e2
+3c001010:	bba3e28b          	.insn	4, 0xbba3e28b
+3c001014:	a3e2                	.insn	2, 0xa3e2
+3c001016:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00101a:	a3e2                	.insn	2, 0xa3e2
+3c00101c:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c001020:	a2e2                	.insn	2, 0xa2e2
+3c001022:	a5a3e28b          	.insn	4, 0xa5a3e28b
+3c001026:	a3e2                	.insn	2, 0xa3e2
+3c001028:	e2be                	.insn	2, 0xe2be
+3c00102a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00102e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001032:	a3e2                	.insn	2, 0xa3e2
+3c001034:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001038:	a3e2                	.insn	2, 0xa3e2
+3c00103a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00103e:	a3e2                	.insn	2, 0xa3e2
+3c001040:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001044:	a3e2                	.insn	2, 0xa3e2
+3c001046:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00104a:	a3e2                	.insn	2, 0xa3e2
+3c00104c:	8fa1e2bf          	.insn	4, 0x8fa1e2bf
+3c001050:	a2e2                	.insn	2, 0xa2e2
+3c001052:	e2b8                	.insn	2, 0xe2b8
+3c001054:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001058:	e2b6                	.insn	2, 0xe2b6
+3c00105a:	88a1                	andi	s1,s1,8
+3c00105c:	a2e2                	.insn	2, 0xa2e2
+3c00105e:	e2bd                	bnez	a3,0x3c0010c4
+3c001060:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001064:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001068:	e20a                	.insn	2, 0xe20a
+3c00106a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00106e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001072:	a3e2                	.insn	2, 0xa3e2
+3c001074:	e286                	.insn	2, 0xe286
+3c001076:	b1a0                	.insn	2, 0xb1a0
+3c001078:	a0e2                	.insn	2, 0xa0e2
+3c00107a:	e280                	.insn	2, 0xe280
+3c00107c:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c001080:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001084:	a3e2                	.insn	2, 0xa3e2
+3c001086:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00108a:	a0e2                	.insn	2, 0xa0e2
+3c00108c:	8ba3e29f          	.insn	4, 0x8ba3e29f
+3c001090:	a3e2                	.insn	2, 0xa3e2
+3c001092:	e2b4                	.insn	2, 0xe2b4
+3c001094:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c001098:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00109c:	a3e2                	.insn	2, 0xa3e2
+3c00109e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0010a2:	a3e2                	.insn	2, 0xa3e2
+3c0010a4:	8ca3e2b7          	lui	t0,0x8ca3e
+3c0010a8:	a0e2                	.insn	2, 0xa0e2
+3c0010aa:	b7a3e2bb          	.insn	4, 0xb7a3e2bb
+3c0010ae:	a3e2                	.insn	2, 0xa3e2
+3c0010b0:	e2b6                	.insn	2, 0xe2b6
+3c0010b2:	a3e2a6a3          	sw	t5,-1491(t0) # 0x8ca3da2d
+3c0010b6:	e284                	.insn	2, 0xe284
+3c0010b8:	a0e288a3          	sb	a4,-1519(t0)
+3c0010bc:	bfa2e2bb          	.insn	4, 0xbfa2e2bb
+3c0010c0:	a3e2                	.insn	2, 0xa3e2
+3c0010c2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0010c6:	a3e2                	.insn	2, 0xa3e2
+3c0010c8:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c0010cc:	a0e2                	.insn	2, 0xa0e2
+3c0010ce:	b6a0e2bf          	.insn	4, 0xb6a0e2bf
+3c0010d2:	a0e2                	.insn	2, 0xa0e2
+3c0010d4:	bfa0e2bf          	.insn	4, 0xbfa0e2bf
+3c0010d8:	a0e2                	.insn	2, 0xa0e2
+3c0010da:	a1a0e29f          	.insn	4, 0xa1a0e29f
+3c0010de:	a0e2                	.insn	2, 0xa0e2
+3c0010e0:	e2b6                	.insn	2, 0xe2b6
+3c0010e2:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0010e6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0010ea:	a3e2                	.insn	2, 0xa3e2
+3c0010ec:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0010f0:	a3e2                	.insn	2, 0xa3e2
+3c0010f2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0010f6:	a1e2                	.insn	2, 0xa1e2
+3c0010f8:	9ba0e2bf          	.insn	4, 0x9ba0e2bf
+3c0010fc:	a0e2                	.insn	2, 0xa0e2
+3c0010fe:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001102:	a3e2                	.insn	2, 0xa3e2
+3c001104:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001108:	a3e2                	.insn	2, 0xa3e2
+3c00110a:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c00110e:	a0e2                	.insn	2, 0xa0e2
+3c001110:	e281                	bnez	a3,0x3c001110
+3c001112:	8ba2                	mv	s7,s0
+3c001114:	a3e2                	.insn	2, 0xa3e2
+3c001116:	e2b9                	bnez	a3,0x3c00115c
+3c001118:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00111c:	b8a0e2bf          	.insn	4, 0xb8a0e2bf
+3c001120:	a3e2                	.insn	2, 0xa3e2
+3c001122:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001126:	a3e2                	.insn	2, 0xa3e2
+3c001128:	a3e20abf          	.insn	4, 0xa3e20abf
+3c00112c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001130:	a3e2                	.insn	2, 0xa3e2
+3c001132:	bfa0e2bf          	.insn	4, 0xbfa0e2bf
+3c001136:	a0e2                	.insn	2, 0xa0e2
+3c001138:	e280                	.insn	2, 0xe280
+3c00113a:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c00113e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001142:	a0e2                	.insn	2, 0xa0e2
+3c001144:	9fa0e2bf          	.insn	4, 0x9fa0e2bf
+3c001148:	a3e2                	.insn	2, 0xa3e2
+3c00114a:	e2a1                	bnez	a3,0x3c00118a
+3c00114c:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c001150:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001154:	a3e2                	.insn	2, 0xa3e2
+3c001156:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00115a:	a3e2                	.insn	2, 0xa3e2
+3c00115c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001160:	a3e2                	.insn	2, 0xa3e2
+3c001162:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001166:	a3e2                	.insn	2, 0xa3e2
+3c001168:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c00116c:	a1e2                	.insn	2, 0xa1e2
+3c00116e:	e2b8                	.insn	2, 0xe2b8
+3c001170:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001174:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001178:	a3e2                	.insn	2, 0xa3e2
+3c00117a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00117e:	a3e2                	.insn	2, 0xa3e2
+3c001180:	a4a3e2b7          	lui	t0,0xa4a3e
+3c001184:	a3e2                	.insn	2, 0xa3e2
+3c001186:	e281                	bnez	a3,0x3c001186
+3c001188:	b0a0                	.insn	2, 0xb0a0
+3c00118a:	a2e2                	.insn	2, 0xa2e2
+3c00118c:	e2b6                	.insn	2, 0xe2b6
+3c00118e:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001192:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001196:	a3e2                	.insn	2, 0xa3e2
+3c001198:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c00119c:	a0e2                	.insn	2, 0xa0e2
+3c00119e:	a0a3e29f          	.insn	4, 0xa0a3e29f
+3c0011a2:	a3e2                	.insn	2, 0xa3e2
+3c0011a4:	e2b6                	.insn	2, 0xe2b6
+3c0011a6:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0011aa:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0011ae:	a0e2                	.insn	2, 0xa0e2
+3c0011b0:	8ba2e2bf          	.insn	4, 0x8ba2e2bf
+3c0011b4:	a3e2                	.insn	2, 0xa3e2
+3c0011b6:	e2a4                	.insn	2, 0xe2a4
+3c0011b8:	a2e29ca3          	sh	a4,-1479(t0) # 0xa4a3da39
+3c0011bc:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c0011c0:	a3e2                	.insn	2, 0xa3e2
+3c0011c2:	e2a4                	.insn	2, 0xe2a4
+3c0011c4:	99a1                	andi	a1,a1,-24
+3c0011c6:	a0e2                	.insn	2, 0xa0e2
+3c0011c8:	a4a2e28b          	.insn	4, 0xa4a2e28b
+3c0011cc:	a3e2                	.insn	2, 0xa3e2
+3c0011ce:	e2b6                	.insn	2, 0xe2b6
+3c0011d0:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0011d4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0011d8:	a3e2                	.insn	2, 0xa3e2
+3c0011da:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0011de:	a1e2                	.insn	2, 0xa1e2
+3c0011e0:	bfa3e287          	.insn	4, 0xbfa3e287
+3c0011e4:	a3e2                	.insn	2, 0xa3e2
+3c0011e6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0011ea:	e20a                	.insn	2, 0xe20a
+3c0011ec:	a3e2ada3          	sw	t5,-1477(t0)
+3c0011f0:	e2a5                	bnez	a3,0x3c001250
+3c0011f2:	a3e2a4a3          	sw	t5,-1495(t0)
+3c0011f6:	e2b6                	.insn	2, 0xe2b6
+3c0011f8:	86a0                	.insn	2, 0x86a0
+3c0011fa:	a3e2                	.insn	2, 0xa3e2
+3c0011fc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001200:	a3e2                	.insn	2, 0xa3e2
+3c001202:	82a0e2b7          	lui	t0,0x82a0e
+3c001206:	a3e2                	.insn	2, 0xa3e2
+3c001208:	e2bc                	.insn	2, 0xe2bc
+3c00120a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00120e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001212:	a3e2                	.insn	2, 0xa3e2
+3c001214:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001218:	a3e2                	.insn	2, 0xa3e2
+3c00121a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00121e:	a3e2                	.insn	2, 0xa3e2
+3c001220:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001224:	a3e2                	.insn	2, 0xa3e2
+3c001226:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00122a:	a3e2                	.insn	2, 0xa3e2
+3c00122c:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c001230:	a2e2                	.insn	2, 0xa2e2
+3c001232:	e2b9                	bnez	a3,0x3c001278
+3c001234:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001238:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00123c:	a3e2                	.insn	2, 0xa3e2
+3c00123e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001242:	a3e2                	.insn	2, 0xa3e2
+3c001244:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001248:	a3e2                	.insn	2, 0xa3e2
+3c00124a:	a6a3e2bf          	.insn	4, 0xa6a3e2bf
+3c00124e:	a3e2                	.insn	2, 0xa3e2
+3c001250:	e299                	bnez	a3,0x3c001256
+3c001252:	9ba2                	add	s7,s7,s0
+3c001254:	a3e2                	.insn	2, 0xa3e2
+3c001256:	e2a9                	bnez	a3,0x3c001298
+3c001258:	a3e2a5a3          	sw	t5,-1493(t0) # 0x82a0da2b
+3c00125c:	e2b6                	.insn	2, 0xe2b6
+3c00125e:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001262:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001266:	a0e2                	.insn	2, 0xa0e2
+3c001268:	8ba3e29f          	.insn	4, 0x8ba3e29f
+3c00126c:	a2e2                	.insn	2, 0xa2e2
+3c00126e:	e2a1                	bnez	a3,0x3c0012ae
+3c001270:	a3e2b6a3          	.insn	4, 0xa3e2b6a3
+3c001274:	bba0e2bf          	.insn	4, 0xbba0e2bf
+3c001278:	a3e2                	.insn	2, 0xa3e2
+3c00127a:	a6a3e2bf          	.insn	4, 0xa6a3e2bf
+3c00127e:	a3e2                	.insn	2, 0xa3e2
+3c001280:	e299                	bnez	a3,0x3c001286
+3c001282:	bba0                	.insn	2, 0xbba0
+3c001284:	a1e2                	.insn	2, 0xa1e2
+3c001286:	b6a3e287          	.insn	4, 0xb6a3e287
+3c00128a:	a3e2                	.insn	2, 0xa3e2
+3c00128c:	e2a6                	.insn	2, 0xe2a6
+3c00128e:	b9a2                	.insn	2, 0xb9a2
+3c001290:	a3e2                	.insn	2, 0xa3e2
+3c001292:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001296:	a1e2                	.insn	2, 0xa1e2
+3c001298:	bfa0e2bf          	.insn	4, 0xbfa0e2bf
+3c00129c:	a0e2                	.insn	2, 0xa0e2
+3c00129e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012a2:	a3e2                	.insn	2, 0xa3e2
+3c0012a4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012a8:	a3e2                	.insn	2, 0xa3e2
+3c0012aa:	a3e20abf          	.insn	4, 0xa3e20abf
+3c0012ae:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012b2:	a3e2                	.insn	2, 0xa3e2
+3c0012b4:	8fa0e2bf          	.insn	4, 0x8fa0e2bf
+3c0012b8:	a3e2                	.insn	2, 0xa3e2
+3c0012ba:	e2b4                	.insn	2, 0xe2b4
+3c0012bc:	a3e2aca3          	sw	t5,-1479(t0)
+3c0012c0:	e2ad                	bnez	a3,0x3c001322
+3c0012c2:	8ba0                	.insn	2, 0x8ba0
+3c0012c4:	a3e2                	.insn	2, 0xa3e2
+3c0012c6:	e2be                	.insn	2, 0xe2be
+3c0012c8:	bfa1                	j	0x3c001220
+3c0012ca:	a0e2                	.insn	2, 0xa0e2
+3c0012cc:	bfa2e29b          	.insn	4, 0xbfa2e29b
+3c0012d0:	a3e2                	.insn	2, 0xa3e2
+3c0012d2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012d6:	a3e2                	.insn	2, 0xa3e2
+3c0012d8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012dc:	a3e2                	.insn	2, 0xa3e2
+3c0012de:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012e2:	a3e2                	.insn	2, 0xa3e2
+3c0012e4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012e8:	a3e2                	.insn	2, 0xa3e2
+3c0012ea:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012ee:	a3e2                	.insn	2, 0xa3e2
+3c0012f0:	80a0e2bf          	.insn	4, 0x80a0e2bf
+3c0012f4:	a3e2                	.insn	2, 0xa3e2
+3c0012f6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0012fa:	a3e2                	.insn	2, 0xa3e2
+3c0012fc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001300:	a3e2                	.insn	2, 0xa3e2
+3c001302:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001306:	a3e2                	.insn	2, 0xa3e2
+3c001308:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00130c:	a3e2                	.insn	2, 0xa3e2
+3c00130e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001312:	a3e2                	.insn	2, 0xa3e2
+3c001314:	8ca3e2b7          	lui	t0,0x8ca3e
+3c001318:	a0e2                	.insn	2, 0xa0e2
+3c00131a:	e2a9                	bnez	a3,0x3c00135c
+3c00131c:	a3e2ada3          	sw	t5,-1477(t0) # 0x8ca3da3b
+3c001320:	e2ad                	bnez	a3,0x3c001382
+3c001322:	a1e2ada3          	sw	t5,-1509(t0)
+3c001326:	e285                	bnez	a3,0x3c001346
+3c001328:	baa2                	.insn	2, 0xbaa2
+3c00132a:	a3e2                	.insn	2, 0xa3e2
+3c00132c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001330:	a3e2                	.insn	2, 0xa3e2
+3c001332:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c001336:	a3e2                	.insn	2, 0xa3e2
+3c001338:	bea3e2bf          	.insn	4, 0xbea3e2bf
+3c00133c:	a3e2                	.insn	2, 0xa3e2
+3c00133e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001342:	a3e2                	.insn	2, 0xa3e2
+3c001344:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c001348:	a3e2                	.insn	2, 0xa3e2
+3c00134a:	e28c                	.insn	2, 0xe28c
+3c00134c:	8fa1                	xor	a5,a5,s0
+3c00134e:	a2e2                	.insn	2, 0xa2e2
+3c001350:	e2a0                	.insn	2, 0xe2a0
+3c001352:	a3e2a4a3          	sw	t5,-1495(t0)
+3c001356:	e2a4                	.insn	2, 0xe2a4
+3c001358:	a3e2a4a3          	sw	t5,-1495(t0)
+3c00135c:	e2a4                	.insn	2, 0xe2a4
+3c00135e:	a3e2b6a3          	.insn	4, 0xa3e2b6a3
+3c001362:	e2be                	.insn	2, 0xe2be
+3c001364:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001368:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00136c:	e20a                	.insn	2, 0xe20a
+3c00136e:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001372:	8fa1e2bf          	.insn	4, 0x8fa1e2bf
+3c001376:	a3e2                	.insn	2, 0xa3e2
+3c001378:	e2bc                	.insn	2, 0xe2bc
+3c00137a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00137e:	8fa1e2bf          	.insn	4, 0x8fa1e2bf
+3c001382:	a3e2                	.insn	2, 0xa3e2
+3c001384:	e2b0                	.insn	2, 0xe2b0
+3c001386:	8fa1                	xor	a5,a5,s0
+3c001388:	a3e2                	.insn	2, 0xa3e2
+3c00138a:	e2b0                	.insn	2, 0xe2b0
+3c00138c:	a1e2bfa3          	.insn	4, 0xa1e2bfa3
+3c001390:	e284                	.insn	2, 0xe284
+3c001392:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001396:	bfa0e2bf          	.insn	4, 0xbfa0e2bf
+3c00139a:	a3e2                	.insn	2, 0xa3e2
+3c00139c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013a0:	a3e2                	.insn	2, 0xa3e2
+3c0013a2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013a6:	a3e2                	.insn	2, 0xa3e2
+3c0013a8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013ac:	a3e2                	.insn	2, 0xa3e2
+3c0013ae:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c0013b2:	a3e2                	.insn	2, 0xa3e2
+3c0013b4:	e2b0                	.insn	2, 0xe2b0
+3c0013b6:	bfa1                	j	0x3c00130e
+3c0013b8:	a3e2                	.insn	2, 0xa3e2
+3c0013ba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013be:	a3e2                	.insn	2, 0xa3e2
+3c0013c0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013c4:	a3e2                	.insn	2, 0xa3e2
+3c0013c6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013ca:	a3e2                	.insn	2, 0xa3e2
+3c0013cc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013d0:	a3e2                	.insn	2, 0xa3e2
+3c0013d2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013d6:	a3e2                	.insn	2, 0xa3e2
+3c0013d8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013dc:	a3e2                	.insn	2, 0xa3e2
+3c0013de:	e2b6                	.insn	2, 0xe2b6
+3c0013e0:	a3e2a4a3          	sw	t5,-1495(t0)
+3c0013e4:	e2ad                	bnez	a3,0x3c001446
+3c0013e6:	a3e2b5a3          	.insn	4, 0xa3e2b5a3
+3c0013ea:	e286                	.insn	2, 0xe286
+3c0013ec:	bba2                	.insn	2, 0xbba2
+3c0013ee:	a3e2                	.insn	2, 0xa3e2
+3c0013f0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013f4:	a3e2                	.insn	2, 0xa3e2
+3c0013f6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0013fa:	a3e2                	.insn	2, 0xa3e2
+3c0013fc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001400:	a3e2                	.insn	2, 0xa3e2
+3c001402:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001406:	a3e2                	.insn	2, 0xa3e2
+3c001408:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00140c:	a1e2                	.insn	2, 0xa1e2
+3c00140e:	b8a2e287          	.insn	4, 0xb8a2e287
+3c001412:	a3e2                	.insn	2, 0xa3e2
+3c001414:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001418:	a3e2                	.insn	2, 0xa3e2
+3c00141a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00141e:	a3e2                	.insn	2, 0xa3e2
+3c001420:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001424:	a3e2                	.insn	2, 0xa3e2
+3c001426:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00142a:	a3e2                	.insn	2, 0xa3e2
+3c00142c:	a3e20abf          	.insn	4, 0xa3e20abf
+3c001430:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001434:	a1e2                	.insn	2, 0xa1e2
+3c001436:	bfa3e287          	.insn	4, 0xbfa3e287
+3c00143a:	a0e2                	.insn	2, 0xa0e2
+3c00143c:	8ba0e29f          	.insn	4, 0x8ba0e29f
+3c001440:	a2e2                	.insn	2, 0xa2e2
+3c001442:	e2b0                	.insn	2, 0xe2b0
+3c001444:	a2e2bfa3          	.insn	4, 0xa2e2bfa3
+3c001448:	e2b0                	.insn	2, 0xe2b0
+3c00144a:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00144e:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c001452:	a3e2                	.insn	2, 0xa3e2
+3c001454:	e288                	.insn	2, 0xe288
+3c001456:	a3e2b4a3          	.insn	4, 0xa3e2b4a3
+3c00145a:	e2a6                	.insn	2, 0xe2a6
+3c00145c:	a0e2a6a3          	sw	a4,-1523(t0)
+3c001460:	e299                	bnez	a3,0x3c001466
+3c001462:	bfa2                	.insn	2, 0xbfa2
+3c001464:	a3e2                	.insn	2, 0xa3e2
+3c001466:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00146a:	a3e2                	.insn	2, 0xa3e2
+3c00146c:	9fa1e2bf          	.insn	4, 0x9fa1e2bf
+3c001470:	a2e2                	.insn	2, 0xa2e2
+3c001472:	e2b0                	.insn	2, 0xe2b0
+3c001474:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001478:	8ca3e2b7          	lui	t0,0x8ca3e
+3c00147c:	a2e2                	.insn	2, 0xa2e2
+3c00147e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001482:	a3e2                	.insn	2, 0xa3e2
+3c001484:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001488:	a3e2                	.insn	2, 0xa3e2
+3c00148a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00148e:	a3e2                	.insn	2, 0xa3e2
+3c001490:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001494:	a3e2                	.insn	2, 0xa3e2
+3c001496:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00149a:	a3e2                	.insn	2, 0xa3e2
+3c00149c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014a0:	a3e2                	.insn	2, 0xa3e2
+3c0014a2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014a6:	a1e2                	.insn	2, 0xa1e2
+3c0014a8:	8ba2e2bf          	.insn	4, 0x8ba2e2bf
+3c0014ac:	a1e2                	.insn	2, 0xa1e2
+3c0014ae:	e284                	.insn	2, 0xe284
+3c0014b0:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0014b4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014b8:	a3e2                	.insn	2, 0xa3e2
+3c0014ba:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014be:	a3e2                	.insn	2, 0xa3e2
+3c0014c0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014c4:	a3e2                	.insn	2, 0xa3e2
+3c0014c6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014ca:	a3e2                	.insn	2, 0xa3e2
+3c0014cc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014d0:	a0e2                	.insn	2, 0xa0e2
+3c0014d2:	e2bc                	.insn	2, 0xe2bc
+3c0014d4:	bfa0                	.insn	2, 0xbfa0
+3c0014d6:	a0e2                	.insn	2, 0xa0e2
+3c0014d8:	bfa0e2bf          	.insn	4, 0xbfa0e2bf
+3c0014dc:	a3e2                	.insn	2, 0xa3e2
+3c0014de:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014e2:	a3e2                	.insn	2, 0xa3e2
+3c0014e4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014e8:	a3e2                	.insn	2, 0xa3e2
+3c0014ea:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0014ee:	e20a                	.insn	2, 0xe20a
+3c0014f0:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0014f4:	b8a3e2bf          	.insn	4, 0xb8a3e2bf
+3c0014f8:	a0e2                	.insn	2, 0xa0e2
+3c0014fa:	80a0e283          	.insn	4, 0x80a0e283
+3c0014fe:	a0e2                	.insn	2, 0xa0e2
+3c001500:	e280                	.insn	2, 0xe280
+3c001502:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c001506:	b8a2e2bf          	.insn	4, 0xb8a2e2bf
+3c00150a:	a3e2                	.insn	2, 0xa3e2
+3c00150c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001510:	a3e2                	.insn	2, 0xa3e2
+3c001512:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001516:	a3e2                	.insn	2, 0xa3e2
+3c001518:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00151c:	a0e2                	.insn	2, 0xa0e2
+3c00151e:	a0a2e29f          	.insn	4, 0xa0a2e29f
+3c001522:	a3e2                	.insn	2, 0xa3e2
+3c001524:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001528:	a3e2                	.insn	2, 0xa3e2
+3c00152a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00152e:	a2e2                	.insn	2, 0xa2e2
+3c001530:	e2a0                	.insn	2, 0xe2a0
+3c001532:	88a1                	andi	s1,s1,8
+3c001534:	a2e2                	.insn	2, 0xa2e2
+3c001536:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00153a:	a3e2                	.insn	2, 0xa3e2
+3c00153c:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c001540:	a3e2                	.insn	2, 0xa3e2
+3c001542:	e28c                	.insn	2, 0xe28c
+3c001544:	bba0                	.insn	2, 0xbba0
+3c001546:	a3e2                	.insn	2, 0xa3e2
+3c001548:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00154c:	a3e2                	.insn	2, 0xa3e2
+3c00154e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001552:	a3e2                	.insn	2, 0xa3e2
+3c001554:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001558:	a3e2                	.insn	2, 0xa3e2
+3c00155a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00155e:	a1e2                	.insn	2, 0xa1e2
+3c001560:	9fa2e2bf          	.insn	4, 0x9fa2e2bf
+3c001564:	a3e2                	.insn	2, 0xa3e2
+3c001566:	e2a1                	bnez	a3,0x3c0015a6
+3c001568:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c00156c:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c001570:	a0e2                	.insn	2, 0xa0e2
+3c001572:	e2b8                	.insn	2, 0xe2b8
+3c001574:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001578:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00157c:	a3e2                	.insn	2, 0xa3e2
+3c00157e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001582:	a3e2                	.insn	2, 0xa3e2
+3c001584:	bfa1e2bf          	.insn	4, 0xbfa1e2bf
+3c001588:	a0e2                	.insn	2, 0xa0e2
+3c00158a:	81a0e29b          	.insn	4, 0x81a0e29b
+3c00158e:	a2e2                	.insn	2, 0xa2e2
+3c001590:	e280                	.insn	2, 0xe280
+3c001592:	a3e2a0a3          	sw	t5,-1503(t0) # 0x8ca3da21
+3c001596:	e2a4                	.insn	2, 0xe2a4
+3c001598:	a1e2b4a3          	.insn	4, 0xa1e2b4a3
+3c00159c:	e284                	.insn	2, 0xe284
+3c00159e:	b9a0                	.insn	2, 0xb9a0
+3c0015a0:	a3e2                	.insn	2, 0xa3e2
+3c0015a2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0015a6:	a3e2                	.insn	2, 0xa3e2
+3c0015a8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0015ac:	a3e2                	.insn	2, 0xa3e2
+3c0015ae:	a3e20abf          	.insn	4, 0xa3e20abf
+3c0015b2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0015b6:	a2e2                	.insn	2, 0xa2e2
+3c0015b8:	e280                	.insn	2, 0xe280
+3c0015ba:	a3e2a4a3          	sw	t5,-1495(t0)
+3c0015be:	e2a4                	.insn	2, 0xe2a4
+3c0015c0:	80a0                	.insn	2, 0x80a0
+3c0015c2:	a0e2                	.insn	2, 0xa0e2
+3c0015c4:	e2b8                	.insn	2, 0xe2b8
+3c0015c6:	a0e2bfa3          	.insn	4, 0xa0e2bfa3
+3c0015ca:	e298                	.insn	2, 0xe298
+3c0015cc:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0015d0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0015d4:	a1e2                	.insn	2, 0xa1e2
+3c0015d6:	9fa0e2bf          	.insn	4, 0x9fa0e2bf
+3c0015da:	a3e2                	.insn	2, 0xa3e2
+3c0015dc:	e281                	bnez	a3,0x3c0015dc
+3c0015de:	a3e2b4a3          	.insn	4, 0xa3e2b4a3
+3c0015e2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0015e6:	a3e2                	.insn	2, 0xa3e2
+3c0015e8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0015ec:	a0e2                	.insn	2, 0xa0e2
+3c0015ee:	bea3e287          	.insn	4, 0xbea3e287
+3c0015f2:	a3e2                	.insn	2, 0xa3e2
+3c0015f4:	84a3e2b7          	lui	t0,0x84a3e
+3c0015f8:	a2e2                	.insn	2, 0xa2e2
+3c0015fa:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c0015fe:	a3e2                	.insn	2, 0xa3e2
+3c001600:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001604:	a3e2                	.insn	2, 0xa3e2
+3c001606:	aea3e2b7          	lui	t0,0xaea3e
+3c00160a:	a0e2                	.insn	2, 0xa0e2
+3c00160c:	bba0e29b          	.insn	4, 0xbba0e29b
+3c001610:	a0e2                	.insn	2, 0xa0e2
+3c001612:	bfa0e2bf          	.insn	4, 0xbfa0e2bf
+3c001616:	a0e2                	.insn	2, 0xa0e2
+3c001618:	9ba2e2bf          	.insn	4, 0x9ba2e2bf
+3c00161c:	a3e2                	.insn	2, 0xa3e2
+3c00161e:	e2a9                	bnez	a3,0x3c001660
+3c001620:	a3e2b6a3          	.insn	4, 0xa3e2b6a3
+3c001624:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001628:	a3e2                	.insn	2, 0xa3e2
+3c00162a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00162e:	a3e2                	.insn	2, 0xa3e2
+3c001630:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c001634:	a2e2                	.insn	2, 0xa2e2
+3c001636:	e2b9                	bnez	a3,0x3c00167c
+3c001638:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00163c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001640:	a0e2                	.insn	2, 0xa0e2
+3c001642:	89a0e29f          	.insn	4, 0x89a0e29f
+3c001646:	a0e2                	.insn	2, 0xa0e2
+3c001648:	e280                	.insn	2, 0xe280
+3c00164a:	a3e280a3          	sb	t5,-1503(t0) # 0xaea3da21
+3c00164e:	e2b6                	.insn	2, 0xe2b6
+3c001650:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001654:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001658:	a3e2                	.insn	2, 0xa3e2
+3c00165a:	87a3e2bf          	.insn	4, 0x87a3e2bf
+3c00165e:	a0e2                	.insn	2, 0xa0e2
+3c001660:	e280                	.insn	2, 0xe280
+3c001662:	bfa0                	.insn	2, 0xbfa0
+3c001664:	a3e2                	.insn	2, 0xa3e2
+3c001666:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00166a:	a3e2                	.insn	2, 0xa3e2
+3c00166c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001670:	e20a                	.insn	2, 0xe20a
+3c001672:	bfa1                	j	0x3c0015ca
+3c001674:	a3e2                	.insn	2, 0xa3e2
+3c001676:	e281                	bnez	a3,0x3c001676
+3c001678:	b8a2                	.insn	2, 0xb8a2
+3c00167a:	a3e2                	.insn	2, 0xa3e2
+3c00167c:	bea3e2bf          	.insn	4, 0xbea3e2bf
+3c001680:	a3e2                	.insn	2, 0xa3e2
+3c001682:	e2a6                	.insn	2, 0xe2a6
+3c001684:	80a1                	srli	s1,s1,0x8
+3c001686:	a0e2                	.insn	2, 0xa0e2
+3c001688:	e2b9                	bnez	a3,0x3c0016ce
+3c00168a:	a0e286a3          	sb	a4,-1523(t0)
+3c00168e:	e299                	bnez	a3,0x3c001694
+3c001690:	a3e28ba3          	sb	t5,-1481(t0)
+3c001694:	e2a9                	bnez	a3,0x3c0016d6
+3c001696:	a3e2b4a3          	.insn	4, 0xa3e2b4a3
+3c00169a:	e2be                	.insn	2, 0xe2be
+3c00169c:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0016a0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0016a4:	a3e2                	.insn	2, 0xa3e2
+3c0016a6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0016aa:	a0e2                	.insn	2, 0xa0e2
+3c0016ac:	90a3e28f          	.insn	4, 0x90a3e28f
+3c0016b0:	a2e2                	.insn	2, 0xa2e2
+3c0016b2:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c0016b6:	a3e2                	.insn	2, 0xa3e2
+3c0016b8:	a6a3e2bf          	.insn	4, 0xa6a3e2bf
+3c0016bc:	a0e2                	.insn	2, 0xa0e2
+3c0016be:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c0016c2:	a3e2                	.insn	2, 0xa3e2
+3c0016c4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0016c8:	a3e2                	.insn	2, 0xa3e2
+3c0016ca:	a7a3e2bf          	.insn	4, 0xa7a3e2bf
+3c0016ce:	a3e2                	.insn	2, 0xa3e2
+3c0016d0:	e2a4                	.insn	2, 0xe2a4
+3c0016d2:	a3e280a3          	sb	t5,-1503(t0)
+3c0016d6:	e2a4                	.insn	2, 0xe2a4
+3c0016d8:	a3e2b4a3          	.insn	4, 0xa3e2b4a3
+3c0016dc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0016e0:	a3e2                	.insn	2, 0xa3e2
+3c0016e2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0016e6:	a3e2                	.insn	2, 0xa3e2
+3c0016e8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0016ec:	a3e2                	.insn	2, 0xa3e2
+3c0016ee:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0016f2:	a3e2                	.insn	2, 0xa3e2
+3c0016f4:	82a0e2bf          	.insn	4, 0x82a0e2bf
+3c0016f8:	a0e2                	.insn	2, 0xa0e2
+3c0016fa:	8ba0e2bb          	.insn	4, 0x8ba0e2bb
+3c0016fe:	a0e2                	.insn	2, 0xa0e2
+3c001700:	e281                	bnez	a3,0x3c001700
+3c001702:	80a2                	mv	ra,s0
+3c001704:	a3e2                	.insn	2, 0xa3e2
+3c001706:	e2b6                	.insn	2, 0xe2b6
+3c001708:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c00170c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001710:	a3e2                	.insn	2, 0xa3e2
+3c001712:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001716:	a0e2                	.insn	2, 0xa0e2
+3c001718:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00171c:	a3e2                	.insn	2, 0xa3e2
+3c00171e:	b5a3e2af          	.insn	4, 0xb5a3e2af
+3c001722:	a3e2                	.insn	2, 0xa3e2
+3c001724:	e284                	.insn	2, 0xe284
+3c001726:	a0e280a3          	sb	a4,-1535(t0)
+3c00172a:	e299                	bnez	a3,0x3c001730
+3c00172c:	b9a1                	j	0x3c001384
+3c00172e:	a3e2                	.insn	2, 0xa3e2
+3c001730:	a3e20abf          	.insn	4, 0xa3e20abf
+3c001734:	a3a3e287          	.insn	4, 0xa3a3e287
+3c001738:	a1e2                	.insn	2, 0xa1e2
+3c00173a:	e29c                	.insn	2, 0xe29c
+3c00173c:	bba0                	.insn	2, 0xbba0
+3c00173e:	a3e2                	.insn	2, 0xa3e2
+3c001740:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001744:	a3e2                	.insn	2, 0xa3e2
+3c001746:	a6a3e2bf          	.insn	4, 0xa6a3e2bf
+3c00174a:	a1e2                	.insn	2, 0xa1e2
+3c00174c:	e288                	.insn	2, 0xe288
+3c00174e:	bba0                	.insn	2, 0xbba0
+3c001750:	a3e2                	.insn	2, 0xa3e2
+3c001752:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001756:	a3e2                	.insn	2, 0xa3e2
+3c001758:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00175c:	a3e2                	.insn	2, 0xa3e2
+3c00175e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001762:	a3e2                	.insn	2, 0xa3e2
+3c001764:	9fa1e2bf          	.insn	4, 0x9fa1e2bf
+3c001768:	a2e2                	.insn	2, 0xa2e2
+3c00176a:	e2a1                	bnez	a3,0x3c0017aa
+3c00176c:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c001770:	a6a3e2bf          	.insn	4, 0xa6a3e2bf
+3c001774:	a1e2                	.insn	2, 0xa1e2
+3c001776:	e299                	bnez	a3,0x3c00177c
+3c001778:	bfa2                	.insn	2, 0xbfa2
+3c00177a:	a3e2                	.insn	2, 0xa3e2
+3c00177c:	b7a3e2bf          	.insn	4, 0xb7a3e2bf
+3c001780:	a3e2                	.insn	2, 0xa3e2
+3c001782:	e2b9                	bnez	a3,0x3c0017c8
+3c001784:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001788:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00178c:	a3e2                	.insn	2, 0xa3e2
+3c00178e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001792:	a3e2                	.insn	2, 0xa3e2
+3c001794:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001798:	a3e2                	.insn	2, 0xa3e2
+3c00179a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00179e:	a3e2                	.insn	2, 0xa3e2
+3c0017a0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017a4:	a3e2                	.insn	2, 0xa3e2
+3c0017a6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017aa:	a3e2                	.insn	2, 0xa3e2
+3c0017ac:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017b0:	a1e2                	.insn	2, 0xa1e2
+3c0017b2:	8ba0e2bf          	.insn	4, 0x8ba0e2bf
+3c0017b6:	a0e2                	.insn	2, 0xa0e2
+3c0017b8:	e280                	.insn	2, 0xe280
+3c0017ba:	a3e280a3          	sb	t5,-1503(t0)
+3c0017be:	e280                	.insn	2, 0xe280
+3c0017c0:	a3e2bca3          	.insn	4, 0xa3e2bca3
+3c0017c4:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017c8:	a3e2                	.insn	2, 0xa3e2
+3c0017ca:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017ce:	a0e2                	.insn	2, 0xa0e2
+3c0017d0:	8ba2e29f          	.insn	4, 0x8ba2e29f
+3c0017d4:	a3e2                	.insn	2, 0xa3e2
+3c0017d6:	e2a1                	bnez	a3,0x3c001816
+3c0017d8:	a3e2bea3          	.insn	4, 0xa3e2bea3
+3c0017dc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017e0:	a3e2                	.insn	2, 0xa3e2
+3c0017e2:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017e6:	a3e2                	.insn	2, 0xa3e2
+3c0017e8:	97a0e2bf          	.insn	4, 0x97a0e2bf
+3c0017ec:	a1e2                	.insn	2, 0xa1e2
+3c0017ee:	bba2e287          	.insn	4, 0xbba2e287
+3c0017f2:	e20a                	.insn	2, 0xe20a
+3c0017f4:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c0017f8:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0017fc:	a3e2                	.insn	2, 0xa3e2
+3c0017fe:	88a0e2a7          	.insn	4, 0x88a0e2a7
+3c001802:	a2e2                	.insn	2, 0xa2e2
+3c001804:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001808:	a3e2                	.insn	2, 0xa3e2
+3c00180a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00180e:	a3e2                	.insn	2, 0xa3e2
+3c001810:	e2a6                	.insn	2, 0xe2a6
+3c001812:	a0e288a3          	sb	a4,-1519(t0)
+3c001816:	e299                	bnez	a3,0x3c00181c
+3c001818:	bfa0                	.insn	2, 0xbfa0
+3c00181a:	a2e2                	.insn	2, 0xa2e2
+3c00181c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001820:	a0e2                	.insn	2, 0xa0e2
+3c001822:	81a0e29b          	.insn	4, 0x81a0e29b
+3c001826:	a2e2                	.insn	2, 0xa2e2
+3c001828:	e280                	.insn	2, 0xe280
+3c00182a:	88a0                	.insn	2, 0x88a0
+3c00182c:	a0e2                	.insn	2, 0xa0e2
+3c00182e:	bfa2e2bf          	.insn	4, 0xbfa2e2bf
+3c001832:	a3e2                	.insn	2, 0xa3e2
+3c001834:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001838:	a3e2                	.insn	2, 0xa3e2
+3c00183a:	e2a6                	.insn	2, 0xe2a6
+3c00183c:	a0e299a3          	sh	a4,-1517(t0)
+3c001840:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c001844:	a3e2                	.insn	2, 0xa3e2
+3c001846:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00184a:	a3e2                	.insn	2, 0xa3e2
+3c00184c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001850:	a3e2                	.insn	2, 0xa3e2
+3c001852:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001856:	a3e2                	.insn	2, 0xa3e2
+3c001858:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00185c:	a3e2                	.insn	2, 0xa3e2
+3c00185e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001862:	a3e2                	.insn	2, 0xa3e2
+3c001864:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001868:	a3e2                	.insn	2, 0xa3e2
+3c00186a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00186e:	a0e2                	.insn	2, 0xa0e2
+3c001870:	80a0e28f          	.insn	4, 0x80a0e28f
+3c001874:	a3e2                	.insn	2, 0xa3e2
+3c001876:	e280                	.insn	2, 0xe280
+3c001878:	a3e29ca3          	sh	t5,-1479(t0)
+3c00187c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001880:	a3e2                	.insn	2, 0xa3e2
+3c001882:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001886:	a3e2                	.insn	2, 0xa3e2
+3c001888:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00188c:	a3e2                	.insn	2, 0xa3e2
+3c00188e:	e2a0                	.insn	2, 0xe2a0
+3c001890:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c001894:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001898:	a3e2                	.insn	2, 0xa3e2
+3c00189a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00189e:	a3e2                	.insn	2, 0xa3e2
+3c0018a0:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0018a4:	a3e2                	.insn	2, 0xa3e2
+3c0018a6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0018aa:	a3e2                	.insn	2, 0xa3e2
+3c0018ac:	81a1e2bf          	.insn	4, 0x81a1e2bf
+3c0018b0:	a2e2                	.insn	2, 0xa2e2
+3c0018b2:	0ab8                	addi	a4,sp,344
+3c0018b4:	a3e2                	.insn	2, 0xa3e2
+3c0018b6:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0018ba:	a3e2                	.insn	2, 0xa3e2
+3c0018bc:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c0018c0:	a3e2                	.insn	2, 0xa3e2
+3c0018c2:	a6a1e2bf          	.insn	4, 0xa6a1e2bf
+3c0018c6:	a3e2                	.insn	2, 0xa3e2
+3c0018c8:	e28c                	.insn	2, 0xe28c
+3c0018ca:	9ba0                	.insn	2, 0x9ba0
+3c0018cc:	a2e2                	.insn	2, 0xa2e2
+3c0018ce:	bfa3e2bb          	.insn	4, 0xbfa3e2bb
+3c0018d2:	a3e2                	.insn	2, 0xa3e2
+3c0018d4:	9ba0e2bf          	.insn	4, 0x9ba0e2bf
+3c0018d8:	a0e2                	.insn	2, 0xa0e2
+3c0018da:	e286                	.insn	2, 0xe286
+3c0018dc:	a4a0                	.insn	2, 0xa4a0
+3c0018de:	a3e2                	.insn	2, 0xa3e2
+3c0018e0:	e2a4                	.insn	2, 0xe2a4
+3c0018e2:	a0a0                	.insn	2, 0xa0a0
+3c0018e4:	a0e2                	.insn	2, 0xa0e2
+3c0018e6:	e298                	.insn	2, 0xe298
+3c0018e8:	bfa2                	.insn	2, 0xbfa2
+3c0018ea:	a1e2                	.insn	2, 0xa1e2
+3c0018ec:	82a1e2b7          	lui	t0,0x82a1e
+3c0018f0:	a0e2                	.insn	2, 0xa0e2
+3c0018f2:	e280                	.insn	2, 0xe280
+3c0018f4:	80a0                	.insn	2, 0x80a0
+3c0018f6:	a2e2                	.insn	2, 0xa2e2
+3c0018f8:	e289                	bnez	a3,0x3c0018fa
+3c0018fa:	a0e299a3          	sh	a4,-1517(t0) # 0x82a1da13
+3c0018fe:	93a0e29b          	.insn	4, 0x93a0e29b
+3c001902:	a0e2                	.insn	2, 0xa0e2
+3c001904:	e288                	.insn	2, 0xe288
+3c001906:	9ba0                	.insn	2, 0x9ba0
+3c001908:	a0e2                	.insn	2, 0xa0e2
+3c00190a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00190e:	a3e2                	.insn	2, 0xa3e2
+3c001910:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001914:	a3e2                	.insn	2, 0xa3e2
+3c001916:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00191a:	a3e2                	.insn	2, 0xa3e2
+3c00191c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001920:	a3e2                	.insn	2, 0xa3e2
+3c001922:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001926:	a3e2                	.insn	2, 0xa3e2
+3c001928:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00192c:	a3e2                	.insn	2, 0xa3e2
+3c00192e:	80a0e2bf          	.insn	4, 0x80a0e2bf
+3c001932:	a2e2                	.insn	2, 0xa2e2
+3c001934:	e2b8                	.insn	2, 0xe2b8
+3c001936:	a3e2bfa3          	.insn	4, 0xa3e2bfa3
+3c00193a:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00193e:	a3e2                	.insn	2, 0xa3e2
+3c001940:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001944:	a3e2                	.insn	2, 0xa3e2
+3c001946:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00194a:	a3e2                	.insn	2, 0xa3e2
+3c00194c:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001950:	a3e2                	.insn	2, 0xa3e2
+3c001952:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001956:	a3e2                	.insn	2, 0xa3e2
+3c001958:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c00195c:	a3e2                	.insn	2, 0xa3e2
+3c00195e:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001962:	a3e2                	.insn	2, 0xa3e2
+3c001964:	bfa3e2bf          	.insn	4, 0xbfa3e2bf
+3c001968:	a1e2                	.insn	2, 0xa1e2
+3c00196a:	bfa2e2bf          	.insn	4, 0xbfa2e2bf
+3c00196e:	a1e2                	.insn	2, 0xa1e2
+3c001970:	e281                	bnez	a3,0x3c001970
+3c001972:	88a0                	.insn	2, 0x88a0
+3c001974:	000a                	c.slli	zero,0x2
+3c001976:	7e7e                	.insn	2, 0x7e7e
+3c001978:	6548                	.insn	2, 0x6548
+3c00197a:	206f7777          	.insn	4, 0x206f7777
+3c00197e:	7266                	.insn	2, 0x7266
+3c001980:	4d206d6f          	jal	s10,0x3c007e52
+3c001984:	6361                	lui	t1,0x18
+3c001986:	6968                	.insn	2, 0x6968
+3c001988:	656e                	.insn	2, 0x656e
+3c00198a:	4d20                	lw	s0,88(a0)
+3c00198c:	2065646f          	jal	s0,0x3c057b92
+3c001990:	333a                	.insn	2, 0x333a
+3c001992:	7e20                	.insn	2, 0x7e20
+3c001994:	0a7e                	slli	s4,s4,0x1f
+3c001996:	0000                	unimp
+3c001998:	1b01                	addi	s6,s6,-32
+3c00199a:	e6f83b03          	.insn	4, 0xe6f83b03
+3c00199e:	0002ffff          	.insn	4, 0x0002ffff
+3c0019a2:	0000                	unimp
+3c0019a4:	e67a                	.insn	2, 0xe67a
+3c0019a6:	e71005ff          	.insn	4, 0xe71005ff
+3c0019aa:	e6e8ffff          	.insn	4, 0xe6e8ffff
+3c0019ae:	e73005ff          	.insn	4, 0xe73005ff
+3c0019b2:	0010ffff          	.insn	4, 0x0010ffff
+3c0019b6:	0000                	unimp
+3c0019b8:	0000                	unimp
+3c0019ba:	0000                	unimp
+3c0019bc:	7a01                	lui	s4,0xfffe0
+3c0019be:	0052                	c.slli	zero,0x14
+3c0019c0:	7c01                	lui	s8,0xfffe0
+3c0019c2:	0101                	addi	sp,sp,0
+3c0019c4:	00020c1b          	.insn	4, 0x00020c1b
+3c0019c8:	001c                	.insn	2, 0x001c
+3c0019ca:	0000                	unimp
+3c0019cc:	0018                	.insn	2, 0x0018
+3c0019ce:	0000                	unimp
+3c0019d0:	e642                	.insn	2, 0xe642
+3c0019d2:	006e05ff          	.insn	4, 0x006e05ff
+3c0019d6:	0000                	unimp
+3c0019d8:	4200                	lw	s0,0(a2)
+3c0019da:	100e                	c.slli	zero,0x23
+3c0019dc:	8142                	mv	sp,a6
+3c0019de:	0201                	addi	tp,tp,0 # 0x0
+3c0019e0:	c160                	sw	s0,68(a0)
+3c0019e2:	0e42                	slli	t3,t3,0x10
+3c0019e4:	0000                	unimp
+3c0019e6:	0000                	unimp
+3c0019e8:	0010                	.insn	2, 0x0010
+3c0019ea:	0000                	unimp
+3c0019ec:	0038                	addi	a4,sp,8
+3c0019ee:	0000                	unimp
+3c0019f0:	e690                	.insn	2, 0xe690
+3c0019f2:	001405ff          	.insn	4, 0x001405ff
+	...
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	3541                	jal	0xfffffe80
+   2:	0000                	unimp
+   4:	7200                	.insn	2, 0x7200
+   6:	7369                	lui	t1,0xffffa
+   8:	01007663          	bgeu	zero,a6,0x14
+   c:	0000002b          	.insn	4, 0x002b
+  10:	1004                	addi	s1,sp,32
+  12:	7205                	lui	tp,0xfffe1
+  14:	3376                	.insn	2, 0x3376
+  16:	6932                	.insn	2, 0x6932
+  18:	7032                	.insn	2, 0x7032
+  1a:	5f31                	li	t5,-20
+  1c:	326d                	jal	0xfffff9c6
+  1e:	3070                	.insn	2, 0x3070
+  20:	7032635f          	.insn	4, 0x7032635f
+  24:	5f30                	lw	a2,120(a4)
+  26:	6d7a                	.insn	2, 0x6d7a
+  28:	756d                	lui	a0,0xffffb
+  2a:	316c                	.insn	2, 0x316c
+  2c:	3070                	.insn	2, 0x3070
+  2e:	61637a5f          	.insn	4, 0x61637a5f
+  32:	7031                	c.lui	zero,0xfffec
+  34:	0030                	addi	a2,sp,8
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	694c                	.insn	2, 0x694c
+   2:	6b6e                	.insn	2, 0x6b6e
+   4:	7265                	lui	tp,0xffff9
+   6:	203a                	.insn	2, 0x203a
+   8:	4c4c                	lw	a1,28(s0)
+   a:	2044                	.insn	2, 0x2044
+   c:	3132                	.insn	2, 0x3132
+   e:	312e                	.insn	2, 0x312e
+  10:	302e                	.insn	2, 0x302e
+	...

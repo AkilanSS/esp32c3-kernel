@@ -84,7 +84,8 @@ pub fn build(b: *std.Build) void {
         "-nographic",
         "-machine",
         "esp32c3",
-        "-drive file=zig-out/bin/flash.bin,if=mtd,fornat-raw",
+        "-drive",
+        "file=zig-out/bin/flash.bin,if=mtd,format=raw",
         "-s",
         "-S",
     });
