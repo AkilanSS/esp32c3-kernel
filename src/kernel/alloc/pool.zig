@@ -1,3 +1,4 @@
+const Error = @import("../error_handler/errors.zig");
 const Self = @This();
 
 // Maintain a free list containing 4KB pages to implement a Pool Allocator
@@ -8,42 +9,40 @@ const CHUNK_SIZE = 1024 * 4;
 const POOL_COUNT = 64;
 
 const Pool = struct {
-    next_pool: ?*Pool,
+    next_pool: ?*volatile Pool,
 };
 
-head: ?*Pool, // points to first free page
+head: ?*volatile Pool, // points to first free page
 
 // Initializes the SRAM which can be allocated to the kernel
-pub fn init(self: *Self, memory_space: *anyopaque) *Pool {
+pub fn init(self: *Self, memory_space: *anyopaque) void {
 
     // Map the address 0x3FC8_0000 to the a Pool struct, which stores the address
     // to the next pool
-    self.head = memory_space;
-    self.head.next_pool = null;
+    self.head = @ptrCast(@alignCast(memory_space));
+    self.head.?.next_pool = null;
 
     // For every consecutive address, assign those address to the pool and form a
     // linked list
-    var node: *Pool = self.head;
+    var node: ?*volatile Pool = self.head;
     for (1..POOL_COUNT) |i| {
-        const new_pool: *Pool = @ptrFromInt(@intFromPtr(memory_space) + CHUNK_SIZE * i);
-        node.next_pool = new_pool;
+        const new_pool: ?*volatile Pool = @ptrFromInt(@intFromPtr(memory_space) + CHUNK_SIZE * i);
+        node.?.next_pool = new_pool;
         node = new_pool;
     }
-
-    return self.head;
 }
 
 // Allocates a page of size 4KB by returning a pointer to it
-pub fn alloc(self: *Self) *anyopaque {
-    const node: *Pool = self.head orelse 0;
-    self.head.* = self.head.next_pool;
+pub fn alloc(self: *Self) !*anyopaque {
+    const node: ?*volatile Pool = self.head orelse return Error.PageError;
+    self.head = self.head.?.next_pool;
     return node;
 }
 
 // Frees a page
 // Adds the given address (hopefully the start of a page) as a Page to the linked list
-pub fn free(self: *Self, page: *anyopaque) noreturn {
-    const page_to_free: *Pool = page;
+pub fn free(self: *Self, page: *anyopaque) void {
+    const page_to_free: ?*volatile Pool = page;
     page_to_free.next_pool = self.head;
     self.head = page_to_free;
 }
